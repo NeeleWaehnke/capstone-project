@@ -1,7 +1,10 @@
 ---
 name: User Story
 about: A classical user story template
-labels: enhancement
+title: ''
+labels: ''
+assignees: ''
+
 ---
 
 ## Value Proposition
@@ -25,7 +28,3 @@ labels: enhancement
 
 - [ ] ...
       ​
-
-## Complexity
-
-...
