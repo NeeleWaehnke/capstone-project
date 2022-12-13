@@ -14,8 +14,7 @@ export default function ItemCard({ name, date, quantity }) {
 
 const StyledItem = styled.li`
   border: 1px solid black;
-  margin: 1%;
-  margin-left: 0;
+  margin: 1% 1% 1% 0;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -28,7 +27,6 @@ const StyledName = styled.h3`
   justify-self: start;
   align-self: center;
   grid-area: name;
-  display: grid;
 `;
 
 const StyledDate = styled.p`
@@ -36,12 +34,11 @@ const StyledDate = styled.p`
   grid-area: date;
   justify-self: center;
   align-self: center;
-  display: grid;
 `;
 
 const StyledQty = styled.p`
   margin: 2%;
-  display: grid;
+
   grid-area: qty;
   justify-self: center;
   align-self: center;
@@ -49,14 +46,14 @@ const StyledQty = styled.p`
 
 const StyledQtyValue = styled.div`
   margin: 2%;
-  display: grid;
+
   grid-area: qtyvalue;
   justify-self: center;
   align-self: center;
 `;
 const StyledDateValue = styled.div`
   margin: 2%;
-  display: grid;
+
   grid-area: datevalue;
   justify-self: center;
   align-self: center;
