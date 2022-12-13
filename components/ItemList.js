@@ -1,10 +1,11 @@
 import { Fragment } from 'react';
 import { items } from '../lib/data';
 import ItemCard from './ItemCard';
+import styled from 'styled-components';
 
 export default function ItemList() {
   return (
-    <ul>
+    <StyledList>
       {items.map((item) => {
         return (
           <Fragment key={item.id}>
@@ -17,6 +18,11 @@ export default function ItemList() {
           </Fragment>
         );
       })}
-    </ul>
+    </StyledList>
   );
 }
+
+const StyledList = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
