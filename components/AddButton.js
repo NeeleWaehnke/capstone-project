@@ -1,15 +1,10 @@
 import AddIcon from '../public/assets/add-icon.svg';
 import styled from 'styled-components';
 
-export default function AddButton({ setAddActive }) {
+export default function AddButton({ onClick }) {
   return (
     <>
-      <StyledButton
-        onClick={() => {
-          setAddActive(true);
-          console.log(true);
-        }}
-      >
+      <StyledButton onClick={onClick}>
         <StyledAdd />
       </StyledButton>
     </>
@@ -18,7 +13,6 @@ export default function AddButton({ setAddActive }) {
 const StyledButton = styled.button`
   background-color: transparent;
   border: none;
-  justify-content: right;
 `;
 const StyledAdd = styled(AddIcon)`
   fill: #ff4d52;
