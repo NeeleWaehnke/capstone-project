@@ -1,8 +1,14 @@
 import AddIcon from '../public/assets/add-icon.svg';
+import CheckIcon from '../public/assets/check.svg';
 
-export default function AddButton() {
+export default function AddButton({ setAddActive }) {
   return (
-    <button>
+    <button
+      onClick={() => {
+        setAddActive(true);
+        console.log(true);
+      }}
+    >
       <AddIcon />
     </button>
   );

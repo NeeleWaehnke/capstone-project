@@ -1,9 +1,9 @@
 import AddButton from './AddButton';
 
-export default function Footer() {
+export default function Footer({ setAddActive }) {
   return (
     <footer>
-      <AddButton />
+      <AddButton setAddActive={setAddActive} />
     </footer>
   );
 }
