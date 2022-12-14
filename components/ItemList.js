@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
-import { items } from '../lib/data';
+import { dummyitems } from '../lib/data';
 import ItemCard from './ItemCard';
 import styled from 'styled-components';
 
-export default function ItemList() {
+export default function ItemList({ items }) {
   return (
     <StyledList>
       {items.map((item) => {

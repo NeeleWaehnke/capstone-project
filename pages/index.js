@@ -1,24 +1,22 @@
 import ItemList from '../components/ItemList';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import AddForm from '../components/AddForm';
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
+import { dummyitems } from '../lib/data';
 
 export default function Home() {
-  const [addActive, setAddActive] = useState(false);
-
+  const [items, setItems] = useState([...dummyitems]);
+  function handleAddItem(newItem) {
+    setItems([{ name, date, quantity, id: nanoid(), ...newItem }, ...items]);
+  }
+  console.log(items);
   return (
     <>
       <Header />
-      {addActive === true ? (
-        <>
-          <ItemList /> <AddForm />
-        </>
-      ) : (
-        <ItemList />
-      )}
+      <ItemList items={items} />
 
-      <Footer setAddActive={setAddActive} />
+      <Footer onAddItem={handleAddItem} />
     </>
   );
 }
