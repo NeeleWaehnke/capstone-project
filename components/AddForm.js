@@ -41,8 +41,9 @@ export default function AddForm({ onAddItem, setAddActive }) {
 }
 
 const StyledForm = styled.form`
-  margin-bottom: 2%;
   border: 1px solid black;
+  background-color: #c4ced4;
+  width: 100%;
 `;
 const StyledButton = styled.button`
   background-color: transparent;
@@ -50,6 +51,7 @@ const StyledButton = styled.button`
   position: absolute;
   bottom: 3px;
   right: 10px;
+  fill: #ff4d52;
 `;
 const StyledCheck = styled(CheckIcon)`
   fill: #ff4d52;
@@ -64,4 +66,5 @@ const InputDate = styled.input`
 const InputQty = styled.input`
   margin: 1%;
   display: block;
+  width: 45px;
 `;

@@ -18,5 +18,9 @@ export default function Footer({ onAddItem }) {
 
 const StyledSection = styled.section`
   position: sticky;
-  bottom: 1%;
+  bottom: 0;
+  max-width: 100%;
+  margin: 4% 0 0 0;
+  display: flex;
+  justify-content: right;
 `;

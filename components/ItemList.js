@@ -25,4 +25,6 @@ export default function ItemList({ items }) {
 const StyledList = styled.ul`
   list-style: none;
   padding: 0;
+  width: 90vw;
+  margin: 0 auto 0 auto; ;
 `;

@@ -13,7 +13,8 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        width: 90vw;
+        max-width: 100vw;
+    overflow-x: hidden;
     }
 `;
 
