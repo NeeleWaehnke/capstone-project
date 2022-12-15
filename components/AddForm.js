@@ -18,7 +18,7 @@ export default function AddForm({ onAddItem }) {
     };
     onAddItem(newItem);
     event.target.reset();
-    setAddActive(false);
+    setAddFormActive(false);
   }
   return (
     <StyledSection>
