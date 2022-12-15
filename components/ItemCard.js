@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import DeleteIcon from '../public/assets/delete-icon.svg';
 
-export default function ItemCard({ name, date, quantity }) {
+export default function ItemCard({ name, date, quantity, onRemoveItem, id }) {
   return (
     <StyledItem>
       <StyledName>{name}</StyledName>
@@ -9,7 +9,11 @@ export default function ItemCard({ name, date, quantity }) {
       <StyledQtyValue>{quantity}</StyledQtyValue>
       <StyledDate>date:</StyledDate>
       <StyledDateValue>{date}</StyledDateValue>
-      <StyledButton>
+      <StyledButton
+        onClick={() => {
+          onRemoveItem(id);
+        }}
+      >
         <StyledDelete />
       </StyledButton>
     </StyledItem>
