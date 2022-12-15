@@ -50,7 +50,6 @@ export default function AddForm({ onAddItem }) {
           setAddActive={setAddFormActive}
           onClick={() => {
             setAddFormActive(true);
-            console.log(true);
           }}
         />
       )}

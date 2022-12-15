@@ -9,11 +9,14 @@ export default function Home() {
   function handleAddItem(newItem) {
     setItems([{ name, date, quantity, ...newItem }, ...items]);
   }
+  function handleRemoveItem(id) {
+    setItems(items.filter((item) => item.id !== id));
+  }
 
   return (
     <>
       <Header />
-      <ItemList items={items} />
+      <ItemList items={items} onRemoveItem={handleRemoveItem} />
       <AddForm onAddItem={handleAddItem} />
     </>
   );
