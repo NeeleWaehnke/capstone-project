@@ -14,7 +14,7 @@ export default function ItemCard({ name, date, quantity }) {
 
 const StyledItem = styled.li`
   border: 1px solid black;
-  margin: 1% 1% 1% 0;
+  margin: 1% 1% 2% 0;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
