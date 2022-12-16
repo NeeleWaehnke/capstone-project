@@ -25,7 +25,6 @@ export default function ItemCard({
     onEditItem(editData);
     setIsEdited(false);
   }
-  const savedDate = date.toString();
 
   return (
     <>
