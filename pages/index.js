@@ -13,11 +13,11 @@ export default function Home() {
     setItems(items.filter((item) => item.id !== id));
   }
 
-  function handleEditItem(editItem) {
-    const editedItem = items.filter((item) => item.id !== editItem.id);
-    setItems([editItem, ...editedItem]);
+  function handleEditItem(updatedItem) {
+    const oldItems = items.filter((item) => item.id !== updatedItem.id);
+    setItems([updatedItem, ...oldItems]);
   }
-
+  console.log(items);
   return (
     <>
       <Header />

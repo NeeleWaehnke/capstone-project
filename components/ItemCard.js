@@ -12,23 +12,23 @@ export default function ItemCard({
   id,
   onEditItem,
 }) {
-  const [isEdited, setIsEdited] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   function handleEditSubmit(event) {
     event.preventDefault();
     const form = event.target.elements;
-    const editData = {
+    const updatedItem = {
       name: form.name.value,
       date: form.date.value,
       id: id,
       quantity: form.quantity.value,
     };
-    onEditItem(editData);
-    setIsEdited(false);
+    onEditItem(updatedItem);
+    setIsEditing(false);
   }
 
   return (
     <>
-      {isEdited === true ? (
+      {isEditing === true ? (
         <StyledForm onSubmit={handleEditSubmit}>
           <label htmlFor="name"></label>
           <StyledInput
@@ -68,8 +68,7 @@ export default function ItemCard({
           <StyledDateValue>{date}</StyledDateValue>
           <StyledEditButton
             onClick={() => {
-              setIsEdited(true);
-              console.log(isEdited);
+              setIsEditing(true);
             }}
           >
             <EditIcon />
