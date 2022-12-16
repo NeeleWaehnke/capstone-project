@@ -14,8 +14,15 @@ export default function Home() {
   }
 
   function handleEditItem(updatedItem) {
-    const oldItems = items.filter((item) => item.id !== updatedItem.id);
-    setItems([updatedItem, ...oldItems]);
+    setItems(
+      items.map((item) => {
+        if (item.id === updatedItem.id) {
+          return updatedItem;
+        } else {
+          return item;
+        }
+      })
+    );
   }
   console.log(items);
   return (
