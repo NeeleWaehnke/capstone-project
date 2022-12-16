@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import DeleteIcon from '../public/assets/delete-icon.svg';
+import EditIcon from '../public/assets/edit.svg';
 
 export default function ItemCard({ name, date, quantity, onRemoveItem, id }) {
   return (
@@ -9,6 +10,9 @@ export default function ItemCard({ name, date, quantity, onRemoveItem, id }) {
       <StyledQtyValue>{quantity}</StyledQtyValue>
       <StyledDate>date:</StyledDate>
       <StyledDateValue>{date}</StyledDateValue>
+      <StyledEditButton>
+        <StyledEdit />
+      </StyledEditButton>
       <StyledButton
         onClick={() => {
           onRemoveItem(id);
@@ -28,11 +32,11 @@ const StyledItem = styled.li`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 20px auto;
   grid-template-areas:
-    'name qty date .'
-    'name qtyvalue datevalue delete'
+    'name qty date edit'
+    'name qtyvalue datevalue edit'
     'name  . . delete  '
-    '. . . .';
-  padding: 10px;
+    '. . . delete';
+  padding: 5px;
 `;
 const StyledName = styled.h3`
   margin: 2%;
@@ -76,8 +80,17 @@ const StyledButton = styled.button`
   grid-area: delete;
   justify-self: end;
   align-self: end;
+  margin: 1%;
+`;
+
+const StyledEditButton = styled(StyledButton)`
+  grid-area: edit;
 `;
 
 const StyledDelete = styled(DeleteIcon)`
+  fill: #ff4d52;
+`;
+
+const StyledEdit = styled(EditIcon)`
   fill: #ff4d52;
 `;
