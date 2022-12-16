@@ -1,25 +1,61 @@
 import styled from 'styled-components';
 import DeleteIcon from '../public/assets/delete-icon.svg';
 import EditIcon from '../public/assets/edit.svg';
+import CheckIcon from '../public/assets/check.svg';
+import { useState } from 'react';
 
 export default function ItemCard({ name, date, quantity, onRemoveItem, id }) {
+  const [isEdited, setIsEdited] = useState(false);
+
   return (
     <StyledItem>
-      <StyledName>{name}</StyledName>
-      <StyledQty>Qty:</StyledQty>
-      <StyledQtyValue>{quantity}</StyledQtyValue>
-      <StyledDate>date:</StyledDate>
-      <StyledDateValue>{date}</StyledDateValue>
-      <StyledEditButton>
-        <StyledEdit />
-      </StyledEditButton>
-      <StyledButton
-        onClick={() => {
-          onRemoveItem(id);
-        }}
-      >
-        <StyledDelete />
-      </StyledButton>
+      {isEdited === true ? (
+        <form>
+          <label htmlFor="name"></label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="name"
+            required
+          />
+          <label htmlFor="date"></label>
+          <input type="date" id="date" name="date" required />
+          <label htmlFor="quantity"></label>
+          <input
+            type="number"
+            id="quantity"
+            name="quantity"
+            placeholder="Qty."
+          />
+          <StyledButton type="submit">
+            <CheckIcon />
+          </StyledButton>
+        </form>
+      ) : (
+        <>
+          <StyledName>{name}</StyledName>
+          <StyledQty>Qty:</StyledQty>
+          <StyledQtyValue>{quantity}</StyledQtyValue>
+          <StyledDate>date:</StyledDate>
+          <StyledDateValue>{date}</StyledDateValue>
+          <StyledEditButton
+            onClick={() => {
+              setIsEdited(true);
+              console.log(isEdited);
+            }}
+          >
+            <EditIcon />
+          </StyledEditButton>
+          <StyledButton
+            onClick={() => {
+              onRemoveItem(id);
+            }}
+          >
+            <DeleteIcon />
+          </StyledButton>
+        </>
+      )}
     </StyledItem>
   );
 }
@@ -54,7 +90,6 @@ const StyledDate = styled.p`
 
 const StyledQty = styled.p`
   margin: 2%;
-
   grid-area: qty;
   justify-self: center;
   align-self: center;
@@ -82,15 +117,6 @@ const StyledButton = styled.button`
   align-self: end;
   margin: 1%;
 `;
-
 const StyledEditButton = styled(StyledButton)`
   grid-area: edit;
-`;
-
-const StyledDelete = styled(DeleteIcon)`
-  fill: #ff4d52;
-`;
-
-const StyledEdit = styled(EditIcon)`
-  fill: #ff4d52;
 `;

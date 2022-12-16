@@ -5,7 +5,7 @@ export default function AddButton({ onClick }) {
   return (
     <>
       <StyledButton onClick={onClick}>
-        <StyledAdd />
+        <AddIcon />
       </StyledButton>
     </>
   );
@@ -13,7 +13,4 @@ export default function AddButton({ onClick }) {
 const StyledButton = styled.button`
   background-color: transparent;
   border: none;
-`;
-const StyledAdd = styled(AddIcon)`
-  fill: #ff4d52;
 `;
