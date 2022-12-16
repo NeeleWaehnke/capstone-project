@@ -4,39 +4,67 @@ import EditIcon from '../public/assets/edit.svg';
 import CheckIcon from '../public/assets/check.svg';
 import { useState } from 'react';
 
-export default function ItemCard({ name, date, quantity, onRemoveItem, id }) {
+export default function ItemCard({
+  name,
+  date,
+  quantity,
+  onRemoveItem,
+  id,
+  onEditItem,
+}) {
   const [isEdited, setIsEdited] = useState(false);
+  function handleEditSubmit(event) {
+    event.preventDefault();
+    const form = event.target.elements;
+    const editData = {
+      name: form.name.value,
+      date: form.date.value,
+      id: id,
+      quantity: form.quantity.value,
+    };
+    onEditItem(editData);
+    setIsEdited(false);
+  }
+  const savedDate = date.toString();
 
   return (
-    <StyledItem>
+    <>
       {isEdited === true ? (
-        <form>
+        <StyledForm onSubmit={handleEditSubmit}>
           <label htmlFor="name"></label>
-          <input
+          <StyledInput
             type="text"
             id="name"
             name="name"
+            defaultValue={name}
             placeholder="name"
-            required
           />
           <label htmlFor="date"></label>
-          <input type="date" id="date" name="date" required />
+          <StyledDate>date:</StyledDate>
+          <StyledInputDate
+            type="date"
+            id="date"
+            name="date"
+            defaultValue={date}
+          />
           <label htmlFor="quantity"></label>
-          <input
+          <StyledQty>Qty:</StyledQty>
+          <StyledInputQty
             type="number"
             id="quantity"
             name="quantity"
             placeholder="Qty."
+            defaultValue={quantity}
           />
           <StyledButton type="submit">
             <CheckIcon />
           </StyledButton>
-        </form>
+        </StyledForm>
       ) : (
-        <>
+        <StyledItem>
           <StyledName>{name}</StyledName>
           <StyledQty>Qty:</StyledQty>
-          <StyledQtyValue>{quantity}</StyledQtyValue>
+          <StyledValue>{quantity}</StyledValue>
           <StyledDate>date:</StyledDate>
           <StyledDateValue>{date}</StyledDateValue>
           <StyledEditButton
@@ -54,9 +82,9 @@ export default function ItemCard({ name, date, quantity, onRemoveItem, id }) {
           >
             <DeleteIcon />
           </StyledButton>
-        </>
+        </StyledItem>
       )}
-    </StyledItem>
+    </>
   );
 }
 
@@ -74,6 +102,41 @@ const StyledItem = styled.li`
     '. . . delete';
   padding: 5px;
 `;
+const StyledForm = styled.form`
+  border: 1px solid black;
+  margin: 1% 1% 2% 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 20px auto;
+  grid-template-areas:
+    '. qty date .'
+    'name qtyvalue datevalue .'
+    'name . . .';
+
+  padding: 5px;
+`;
+
+const StyledInput = styled.input`
+  margin: 2%;
+  display: flex;
+  justify-self: start;
+  align-self: center;
+  grid-area: name;
+  width: 100px;
+`;
+
+const StyledInputDate = styled(StyledInput)`
+  grid-area: datevalue;
+  justify-self: center;
+  width: 110px;
+`;
+const StyledInputQty = styled(StyledInput)`
+  grid-area: qtyvalue;
+  justify-self: center;
+  width: 45px;
+`;
+
 const StyledName = styled.h3`
   margin: 2%;
   justify-self: start;
@@ -88,25 +151,18 @@ const StyledDate = styled.p`
   align-self: center;
 `;
 
-const StyledQty = styled.p`
-  margin: 2%;
+const StyledQty = styled(StyledDate)`
   grid-area: qty;
-  justify-self: center;
-  align-self: center;
 `;
 
-const StyledQtyValue = styled.div`
+const StyledValue = styled.div`
   margin: 2%;
-
   grid-area: qtyvalue;
   justify-self: center;
   align-self: center;
 `;
-const StyledDateValue = styled.div`
-  margin: 2%;
+const StyledDateValue = styled(StyledValue)`
   grid-area: datevalue;
-  justify-self: center;
-  align-self: center;
 `;
 
 const StyledButton = styled.button`

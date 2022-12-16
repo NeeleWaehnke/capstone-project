@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import ItemCard from './ItemCard';
 import styled from 'styled-components';
 
-export default function ItemList({ items, onRemoveItem }) {
+export default function ItemList({ items, onRemoveItem, onEditItem }) {
   return (
     <StyledList>
       {items.map((item) => {
@@ -14,6 +14,7 @@ export default function ItemList({ items, onRemoveItem }) {
               date={item.date}
               quantity={item.quantity}
               onRemoveItem={onRemoveItem}
+              onEditItem={onEditItem}
             />
           </Fragment>
         );
