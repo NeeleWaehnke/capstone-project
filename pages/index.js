@@ -13,10 +13,26 @@ export default function Home() {
     setItems(items.filter((item) => item.id !== id));
   }
 
+  function handleEditItem(updatedItem) {
+    setItems(
+      items.map((item) => {
+        if (item.id === updatedItem.id) {
+          return updatedItem;
+        } else {
+          return item;
+        }
+      })
+    );
+  }
+  console.log(items);
   return (
     <>
       <Header />
-      <ItemList items={items} onRemoveItem={handleRemoveItem} />
+      <ItemList
+        items={items}
+        onRemoveItem={handleRemoveItem}
+        onEditItem={handleEditItem}
+      />
       <AddForm onAddItem={handleAddItem} />
     </>
   );

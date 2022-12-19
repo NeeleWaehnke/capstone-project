@@ -42,7 +42,7 @@ export default function AddForm({ onAddItem }) {
             placeholder="Qty."
           />
           <StyledButton type="submit">
-            <StyledCheck />
+            <CheckIcon />
           </StyledButton>
         </StyledForm>
       ) : (
@@ -78,9 +78,7 @@ const StyledButton = styled.button`
   right: 10px;
   fill: #ff4d52;
 `;
-const StyledCheck = styled(CheckIcon)`
-  fill: #ff4d52;
-`;
+
 const InputName = styled.input`
   margin: 1%;
 `;
