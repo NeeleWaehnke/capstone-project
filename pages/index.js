@@ -3,9 +3,12 @@ import Header from '../components/Header';
 import AddForm from '../components/AddForm';
 import { useState } from 'react';
 import { dummyitems } from '../lib/data';
+import useLocalStorageState from 'use-local-storage-state';
 
 export default function Home() {
-  const [items, setItems] = useState(dummyitems);
+  const [items, setItems] = useLocalStorageState('', {
+    defaultValue: dummyitems,
+  });
   function handleAddItem(newItem) {
     setItems([{ name, date, quantity, ...newItem }, ...items]);
   }
