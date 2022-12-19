@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import AddButton from './AddButton';
-import { format } from 'date-fns';
 
 export default function AddForm({ onAddItem }) {
   const [addFormActive, setAddFormActive] = useState(false);
