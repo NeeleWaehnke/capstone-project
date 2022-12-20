@@ -26,14 +26,13 @@ export default function ItemCard({
     onEditItem(updatedItem);
     setIsEditing(false);
   }
-  const dateString = date;
 
-  function changeDate(dateString) {
-    const date = new Date(dateString);
+  function changeDate(date) {
+    const changedDate = new Date(date);
 
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const year = date.getFullYear();
+    const day = String(changedDate.getDate()).padStart(2, '0');
+    const month = String(changedDate.getMonth() + 1).padStart(2, '0');
+    const year = changedDate.getFullYear();
 
     return `${day}.${month}.${year}`;
   }
@@ -77,7 +76,7 @@ export default function ItemCard({
           <StyledQty>Qty:</StyledQty>
           <StyledValue>{quantity}</StyledValue>
           <StyledDate>date:</StyledDate>
-          <StyledDateValue>{changeDate(dateString)}</StyledDateValue>
+          <StyledDateValue>{changeDate(date)}</StyledDateValue>
           <StyledEditButton
             onClick={() => {
               setIsEditing(true);
