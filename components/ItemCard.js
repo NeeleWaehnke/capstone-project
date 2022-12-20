@@ -27,7 +27,7 @@ export default function ItemCard({
     setIsEditing(false);
   }
   const dateString = date;
-  console.log(Date.now());
+
   function changeDate(dateString) {
     const date = new Date(dateString);
 
@@ -37,7 +37,7 @@ export default function ItemCard({
 
     return `${day}.${month}.${year}`;
   }
-  console.log(dateString);
+
   return (
     <>
       {isEditing === true ? (
