@@ -1,7 +1,6 @@
 import ItemList from '../components/ItemList';
 import Header from '../components/Header';
 import AddForm from '../components/AddForm';
-import { useState } from 'react';
 import { dummyitems } from '../lib/data';
 import useLocalStorageState from 'use-local-storage-state';
 
