@@ -15,18 +15,17 @@ export default function ItemList({
       <StyledList>
         {currentItems.map((item) => {
           return (
-            <Fragment key={item.id}>
-              <ItemCard
-                id={item.id}
-                name={item.name}
-                date={item.date}
-                quantity={item.quantity}
-                storage={item.storage}
-                onRemoveItem={onRemoveItem}
-                onEditItem={onEditItem}
-                storages={storages}
-              />
-            </Fragment>
+            <ItemCard
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              date={item.date}
+              quantity={item.quantity}
+              storage={item.storage}
+              onRemoveItem={onRemoveItem}
+              onEditItem={onEditItem}
+              storages={storages}
+            />
           );
         })}
       </StyledList>

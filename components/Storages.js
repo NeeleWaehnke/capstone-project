@@ -9,7 +9,7 @@ export default function Storages({ storages, setStorages }) {
       name: form.storage.value,
       id: nanoid(),
     };
-    setStorages([{ name, ...newStorage }, ...storages]);
+    setStorages([{ newStorage }, ...storages]);
 
     event.target.reset();
   }
