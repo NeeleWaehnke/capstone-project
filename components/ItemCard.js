@@ -8,9 +8,11 @@ export default function ItemCard({
   name,
   date,
   quantity,
+  storage,
   onRemoveItem,
   id,
   onEditItem,
+  storages,
 }) {
   const [isEditing, setIsEditing] = useState(false);
   function handleEditSubmit(event) {
@@ -66,6 +68,12 @@ export default function ItemCard({
             placeholder="Qty."
             defaultValue={quantity}
           />
+          <label htmlFor="storage"></label>
+          <select id="storage" name="storage">
+            {storages.map((storage) => {
+              return <option value={storage.id}>{storage.name}</option>;
+            })}
+          </select>
           <StyledButton type="submit">
             <CheckIcon />
           </StyledButton>
@@ -77,6 +85,8 @@ export default function ItemCard({
           <StyledValue>{quantity}</StyledValue>
           <StyledDate>date:</StyledDate>
           <StyledDateValue>{changeDate(date)}</StyledDateValue>
+
+          <p>{storage}</p>
           <StyledEditButton
             onClick={() => {
               setIsEditing(true);

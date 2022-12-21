@@ -1,14 +1,12 @@
 import Storages from '../components/Storages';
 import Header from '../components/Header';
-import Link from 'next/link';
+import AddForm from '../components/AddForm';
 
-export default function Home() {
+export default function Home({ storages, setStorages }) {
   return (
     <>
       <Header />
-      <Link href="/ItemList">
-        <Storages />
-      </Link>
+      <Storages storages={storages} setStorages={setStorages} />
     </>
   );
 }

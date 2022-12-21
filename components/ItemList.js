@@ -3,11 +3,17 @@ import ItemCard from './ItemCard';
 import styled from 'styled-components';
 import Link from 'next/link';
 
-export default function ItemList({ items, onRemoveItem, onEditItem }) {
+export default function ItemList({
+  currentItems,
+  onRemoveItem,
+  onEditItem,
+  storages,
+}) {
   return (
     <>
+      <Link href="/">Go back</Link>
       <StyledList>
-        {items.map((item) => {
+        {currentItems.map((item) => {
           return (
             <Fragment key={item.id}>
               <ItemCard
@@ -15,14 +21,15 @@ export default function ItemList({ items, onRemoveItem, onEditItem }) {
                 name={item.name}
                 date={item.date}
                 quantity={item.quantity}
+                storage={item.storage}
                 onRemoveItem={onRemoveItem}
                 onEditItem={onEditItem}
+                storages={storages}
               />
             </Fragment>
           );
         })}
       </StyledList>
-      <Link href="/">Go back</Link>
     </>
   );
 }
