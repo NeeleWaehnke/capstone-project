@@ -9,7 +9,7 @@ export default function Storages({ storages, setStorages }) {
       name: form.storage.value,
       id: nanoid(),
     };
-    setStorages([{ newStorage }, ...storages]);
+    setStorages([newStorage, ...storages]);
 
     event.target.reset();
   }
@@ -26,11 +26,11 @@ export default function Storages({ storages, setStorages }) {
 
       {storages.map((storage) => {
         return (
-          <Link href={`/${storage.name}`}>
-            <section key={storage.id}>
+          <section key={storage.id}>
+            <Link href={`/${storage.name}`}>
               <h3>{storage.name}</h3>
-            </section>
-          </Link>
+            </Link>
+          </section>
         );
       })}
     </>
