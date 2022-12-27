@@ -23,8 +23,9 @@ export default function ItemCard({
       date: form.date.value,
       id: id,
       quantity: form.quantity.value,
+      storage: form.storage.value,
     };
-
+    console.log('edit', updatedItem);
     onEditItem(updatedItem);
     setIsEditing(false);
   }
@@ -71,7 +72,11 @@ export default function ItemCard({
           <label htmlFor="storage"></label>
           <select id="storage" name="storage">
             {storages.map((storage) => {
-              return <option value={storage.id}>{storage.name}</option>;
+              return (
+                <option value={storage.name} key={storage.id}>
+                  {storage.name}
+                </option>
+              );
             })}
           </select>
           <StyledButton type="submit">

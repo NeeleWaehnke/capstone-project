@@ -45,7 +45,11 @@ export default function AddForm({ onAddItem, storages, currentStorage }) {
           <label htmlFor="storage"></label>
           <select id="storage" name="storage" defaultValue={currentStorage}>
             {storages.map((storage) => {
-              return <option value={storage.name}>{storage.name}</option>;
+              return (
+                <option key={storage.name} value={storage.name}>
+                  {storage.name}
+                </option>
+              );
             })}
           </select>
           <StyledButton type="submit">

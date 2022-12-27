@@ -9,11 +9,19 @@ export default function ItemList({
   onEditItem,
   storages,
 }) {
+  const dateSortedItems = currentItems.slice().sort(function (a, b) {
+    const date1 = new Date(a.date);
+    const date2 = new Date(b.date);
+
+    return date1 - date2;
+  });
+  console.log('sorted:', dateSortedItems);
+  console.log('items', currentItems);
   return (
     <>
       <Link href="/">Go back</Link>
       <StyledList>
-        {currentItems.map((item) => {
+        {dateSortedItems.map((item) => {
           return (
             <ItemCard
               key={item.id}
