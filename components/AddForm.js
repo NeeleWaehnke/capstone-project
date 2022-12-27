@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import AddButton from './AddButton';
 
-export default function AddForm({ onAddItem }) {
+export default function AddForm({ onAddItem, storages, currentStorage }) {
   const [addFormActive, setAddFormActive] = useState(false);
 
   function handleSubmit(event) {
@@ -14,6 +14,7 @@ export default function AddForm({ onAddItem }) {
       name: form.name.value,
       date: form.date.value,
       quantity: form.quantity.value,
+      storage: form.storage.value,
       id: nanoid(),
     };
     onAddItem(newItem);
@@ -41,6 +42,12 @@ export default function AddForm({ onAddItem }) {
             name="quantity"
             placeholder="Qty."
           />
+          <label htmlFor="storage"></label>
+          <select id="storage" name="storage" defaultValue={currentStorage}>
+            {storages.map((storage) => {
+              return <option value={storage.name}>{storage.name}</option>;
+            })}
+          </select>
           <StyledButton type="submit">
             <CheckIcon />
           </StyledButton>
