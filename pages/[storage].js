@@ -39,8 +39,7 @@ export default function Storage() {
         } else {
           return item;
         }
-      }),
-      ...items
+      })
     );
   }
 

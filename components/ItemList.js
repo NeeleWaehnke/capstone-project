@@ -15,8 +15,7 @@ export default function ItemList({
 
     return date1 - date2;
   });
-  console.log('sorted:', dateSortedItems);
-  console.log('items', currentItems);
+
   return (
     <>
       <Link href="/">Go back</Link>

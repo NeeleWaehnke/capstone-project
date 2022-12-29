@@ -25,7 +25,7 @@ export default function ItemCard({
       quantity: form.quantity.value,
       storage: form.storage.value,
     };
-    console.log('edit', updatedItem);
+
     onEditItem(updatedItem);
     setIsEditing(false);
   }
