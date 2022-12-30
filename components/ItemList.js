@@ -1,4 +1,3 @@
-import { Fragment } from 'react';
 import ItemCard from './ItemCard';
 import styled from 'styled-components';
 import Link from 'next/link';
