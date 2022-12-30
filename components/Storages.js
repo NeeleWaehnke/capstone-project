@@ -13,7 +13,6 @@ export default function Storages({ storages, setStorages }) {
 
     event.target.reset();
   }
-  console.log(storages);
 
   return (
     <>
