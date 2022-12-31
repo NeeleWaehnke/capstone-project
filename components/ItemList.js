@@ -1,13 +1,17 @@
 import ItemCard from './ItemCard';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { differenceInCalendarDays } from 'date-fns';
+import { useRouter } from 'next/router';
 
 export default function ItemList({
   currentItems,
   onRemoveItem,
   onEditItem,
   storages,
+  setItems,
 }) {
+  const { pathname } = useRouter();
   const dateSortedItems = currentItems.slice().sort(function (a, b) {
     const date1 = new Date(a.date);
     const date2 = new Date(b.date);
@@ -15,25 +19,62 @@ export default function ItemList({
     return date1 - date2;
   });
 
+  function calculateDifference(date) {
+    const itemDate = new Date(date);
+    const now = new Date();
+    const difference = differenceInCalendarDays(itemDate, now);
+    return difference;
+  }
+  function includeDifference(items) {
+    const newItems = items.map((item) =>
+      calculateDifference(item.date) < 4
+        ? { ...item, warningActive: true }
+        : item
+    );
+    return newItems;
+  }
+  const sortedItemsWithDate = includeDifference(dateSortedItems);
+  console.log(sortedItemsWithDate);
+  const warningItems = sortedItemsWithDate.filter(
+    (item) => item.warningActive === true
+  );
+  console.log('warning:', warningItems);
+
   return (
     <>
       <Link href="/">Go back</Link>
       <StyledList>
-        {dateSortedItems.map((item) => {
-          return (
-            <ItemCard
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              date={item.date}
-              quantity={item.quantity}
-              storage={item.storage}
-              onRemoveItem={onRemoveItem}
-              onEditItem={onEditItem}
-              storages={storages}
-            />
-          );
-        })}
+        {pathname === '/warning'
+          ? warningItems.map((item) => {
+              return (
+                <ItemCard
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  date={item.date}
+                  quantity={item.quantity}
+                  storage={item.storage}
+                  onRemoveItem={onRemoveItem}
+                  onEditItem={onEditItem}
+                  storages={storages}
+                />
+              );
+            })
+          : sortedItemsWithDate.map((item) => {
+              return (
+                <ItemCard
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  date={item.date}
+                  quantity={item.quantity}
+                  storage={item.storage}
+                  onRemoveItem={onRemoveItem}
+                  onEditItem={onEditItem}
+                  storages={storages}
+                />
+              );
+            })}
       </StyledList>
     </>
   );

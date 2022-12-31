@@ -3,16 +3,13 @@ import useLocalStorageState from 'use-local-storage-state';
 import Header from '../components/Header';
 import ItemList from '../components/ItemList';
 import AddForm from '../components/AddForm';
-import { dummyitems } from '../lib/data';
 
 export default function Storage() {
   const router = useRouter();
   const { storage } = router.query;
 
   const [storages] = useLocalStorageState('storages');
-  const [items, setItems] = useLocalStorageState('items', {
-    defaultValue: dummyitems,
-  });
+  const [items, setItems] = useLocalStorageState('items');
 
   if (!storages || !items) {
     return null;
@@ -51,6 +48,8 @@ export default function Storage() {
         onRemoveItem={handleRemoveItem}
         onEditItem={handleEditItem}
         storages={storages}
+        setItems={setItems}
+        items={items}
       />
       <AddForm
         onAddItem={handleAddItem}
