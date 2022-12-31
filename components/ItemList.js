@@ -9,7 +9,6 @@ export default function ItemList({
   onRemoveItem,
   onEditItem,
   storages,
-  setItems,
 }) {
   const { pathname } = useRouter();
   const dateSortedItems = currentItems.slice().sort(function (a, b) {
@@ -38,7 +37,6 @@ export default function ItemList({
   const warningItems = sortedItemsWithDate.filter(
     (item) => item.warningActive === true
   );
-  console.log('warning:', warningItems);
 
   return (
     <>

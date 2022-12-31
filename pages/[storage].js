@@ -48,8 +48,6 @@ export default function Storage() {
         onRemoveItem={handleRemoveItem}
         onEditItem={handleEditItem}
         storages={storages}
-        setItems={setItems}
-        items={items}
       />
       <AddForm
         onAddItem={handleAddItem}
