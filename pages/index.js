@@ -1,4 +1,4 @@
-import Storages from '../components/Storages';
+import StoragesPage from '../components/StoragesPage';
 import Header from '../components/Header';
 import WarningPage from '../components/WarningPage';
 import useLocalStorageState from 'use-local-storage-state';
@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <Storages
+      <StoragesPage
         storages={storages}
         onStorage={handleStorage}
         onItems={handleItems}
