@@ -1,7 +1,8 @@
 import { nanoid } from 'nanoid';
 import Link from 'next/link';
+import useLocalStorageState from 'use-local-storage-state';
 
-export default function Storages({ storages, setStorages }) {
+export default function Storages({ storages, onStorage }) {
   function handleSubmitAdd(event) {
     event.preventDefault();
     const form = event.target.elements;
@@ -9,11 +10,10 @@ export default function Storages({ storages, setStorages }) {
       name: form.storage.value,
       id: nanoid(),
     };
-    setStorages([newStorage, ...storages]);
+    onStorage([newStorage, ...storages]);
 
     event.target.reset();
   }
-  console.log(storages);
 
   return (
     <>
