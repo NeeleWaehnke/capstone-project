@@ -11,6 +11,10 @@ export default function ItemList({
   storages,
 }) {
   const { pathname } = useRouter();
+
+  if (!currentItems) {
+    return null;
+  }
   const dateSortedItems = currentItems.slice().sort(function (a, b) {
     const date1 = new Date(a.date);
     const date2 = new Date(b.date);
@@ -33,7 +37,7 @@ export default function ItemList({
     return newItems;
   }
   const sortedItemsWithDate = includeDifference(dateSortedItems);
-  console.log(sortedItemsWithDate);
+
   const warningItems = sortedItemsWithDate.filter(
     (item) => item.warningActive === true
   );
