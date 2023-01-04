@@ -12,21 +12,14 @@ export default function Home() {
   const [storages, setStorages] = useLocalStorageState('storages', {
     defaultValue: dummystorage,
   });
-  function handleStorage(prop) {
-    setStorages(prop);
-  }
-  function handleItems(prop) {
-    setItems(prop);
+  function handleStorage(storage) {
+    setStorages(storage);
   }
 
   return (
     <>
       <Header />
-      <StoragesPage
-        storages={storages}
-        onStorage={handleStorage}
-        onItems={handleItems}
-      />
+      <StoragesPage storages={storages} onStorage={handleStorage} />
       <WarningPage />
     </>
   );
