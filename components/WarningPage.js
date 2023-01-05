@@ -1,8 +1,6 @@
 import Link from 'next/link';
 
 export default function WarningPage({ warningItems }) {
-  console.log(warningItems);
-
   return (
     <section>
       <Link href="/warning">
