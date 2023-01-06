@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import ItemList from '../components/ItemList';
 import AddForm from '../components/AddForm';
 
-export default function Storage() {
+export default function Storage({ sortedItemsWithDate }) {
   const router = useRouter();
   const { storage } = router.query;
 
@@ -15,7 +15,9 @@ export default function Storage() {
     return null;
   }
 
-  const currentItems = items.filter((item) => item.storage === storage);
+  const currentItems = sortedItemsWithDate.filter(
+    (item) => item.storage === storage
+  );
 
   if (!currentItems) {
     return null;

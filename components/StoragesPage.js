@@ -1,8 +1,7 @@
 import { nanoid } from 'nanoid';
 import Link from 'next/link';
-import useLocalStorageState from 'use-local-storage-state';
 
-export default function Storages({ storages, onStorage }) {
+export default function Storages({ storages, onStorage, items }) {
   function handleSubmitAdd(event) {
     event.preventDefault();
     const form = event.target.elements;
@@ -13,6 +12,11 @@ export default function Storages({ storages, onStorage }) {
     onStorage([newStorage, ...storages]);
 
     event.target.reset();
+  }
+
+  function getNumberOfItems(place, items) {
+    const filteredItems = items.filter((item) => item.storage === place);
+    return filteredItems.length;
   }
 
   return (
@@ -30,6 +34,7 @@ export default function Storages({ storages, onStorage }) {
             <Link href={`/${storage.name}`}>
               <h3>{storage.name}</h3>
             </Link>
+            <p> {getNumberOfItems(storage.name, items)} items</p>
           </section>
         );
       })}

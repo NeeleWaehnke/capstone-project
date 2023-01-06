@@ -2,7 +2,7 @@ import Header from '../components/Header';
 import ItemList from '../components/ItemList';
 import useLocalStorageState from 'use-local-storage-state';
 
-export default function Warning() {
+export default function Warning({ warningItems }) {
   const [items, setItems] = useLocalStorageState('items');
   const [storages] = useLocalStorageState('storages');
   function handleRemoveItem(id) {
@@ -25,7 +25,7 @@ export default function Warning() {
     <>
       <Header />
       <ItemList
-        currentItems={items}
+        currentItems={warningItems}
         onRemoveItem={handleRemoveItem}
         onEditItem={handleEditItem}
         storages={storages}
