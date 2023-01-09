@@ -1,4 +1,4 @@
-import AddIcon from '../public/assets/add-icon.svg';
+import AddIcon from '../public/assets/add-circle.svg';
 import styled from 'styled-components';
 
 export default function AddButton({ onClick }) {

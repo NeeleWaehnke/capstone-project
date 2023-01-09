@@ -53,16 +53,16 @@ export default function ItemCard({
             defaultValue={name}
             placeholder="name"
           />
-          <label htmlFor="date"></label>
-          <StyledDate>date:</StyledDate>
+          <StyledText htmlFor="date">date:</StyledText>
+
           <StyledInputDate
             type="date"
             id="date"
             name="date"
             defaultValue={date}
           />
-          <label htmlFor="quantity"></label>
-          <StyledQty>Qty:</StyledQty>
+          <StyledQty htmlFor="quantity">Qty:</StyledQty>
+
           <StyledInputQty
             type="number"
             id="quantity"
@@ -71,7 +71,7 @@ export default function ItemCard({
             defaultValue={quantity}
           />
           <label htmlFor="storage"></label>
-          <select id="storage" name="storage">
+          <StyledSelector id="storage" name="storage">
             {storages.map((storage) => {
               return (
                 <option value={storage.name} key={storage.id}>
@@ -79,7 +79,7 @@ export default function ItemCard({
                 </option>
               );
             })}
-          </select>
+          </StyledSelector>
           <StyledButton type="submit">
             <CheckIcon />
           </StyledButton>
@@ -89,10 +89,9 @@ export default function ItemCard({
           <StyledName>{name}</StyledName>
           <StyledQty>Qty:</StyledQty>
           <StyledValue>{quantity}</StyledValue>
-          <StyledDate>date:</StyledDate>
+          <StyledText>date:</StyledText>
           <StyledDateValue>{changeDate(date)}</StyledDateValue>
-
-          <p>{storage}</p>
+          <StyledStorage>{storage}</StyledStorage>
           <StyledEditButton
             onClick={() => {
               setIsEditing(true);
@@ -100,13 +99,13 @@ export default function ItemCard({
           >
             <EditIcon />
           </StyledEditButton>
-          <StyledButton
+          <StyledDeleteButton
             onClick={() => {
               onRemoveItem(id);
             }}
           >
             <DeleteIcon />
-          </StyledButton>
+          </StyledDeleteButton>
         </StyledItem>
       )}
     </>
@@ -114,7 +113,7 @@ export default function ItemCard({
 }
 
 const StyledItem = styled.li`
-  border: 1px solid black;
+  border-radius: 5px;
   margin: 1% 1% 2% 0;
   width: 100%;
   display: grid;
@@ -123,9 +122,10 @@ const StyledItem = styled.li`
   grid-template-areas:
     'name qty date edit'
     'name qtyvalue datevalue edit'
-    'name  . . delete  '
+    'storage  . . delete  '
     '. . . delete';
   padding: 5px;
+  background-color: #fcfffd;
 `;
 const StyledForm = styled.form`
   border: 1px solid black;
@@ -135,31 +135,40 @@ const StyledForm = styled.form`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 20px auto;
   grid-template-areas:
-    '. qty date .'
+    'name qty date .'
     'name qtyvalue datevalue .'
-    'name . . .';
+    'storage . . check';
 
   padding: 5px;
+  background-color: #fcfffd;
 `;
 
 const StyledInput = styled.input`
   margin: 2%;
   display: flex;
   justify-self: start;
-  align-self: center;
+  align-self: end;
   grid-area: name;
   width: 100px;
+  height: 28px;
 `;
 
 const StyledInputDate = styled(StyledInput)`
   grid-area: datevalue;
   justify-self: center;
   width: 110px;
+  height: fit-content;
+  align-self: center;
 `;
-const StyledInputQty = styled(StyledInput)`
+const StyledInputQty = styled(StyledInputDate)`
   grid-area: qtyvalue;
-  justify-self: center;
   width: 45px;
+`;
+
+const StyledSelector = styled.select`
+  grid-area: storage;
+  height: fit-content;
+  align-self: center;
 `;
 
 const StyledName = styled.h3`
@@ -169,15 +178,20 @@ const StyledName = styled.h3`
   grid-area: name;
 `;
 
-const StyledDate = styled.p`
+const StyledText = styled.label`
   margin: 2%;
   grid-area: date;
   justify-self: center;
   align-self: center;
 `;
 
-const StyledQty = styled(StyledDate)`
+const StyledQty = styled(StyledText)`
   grid-area: qty;
+`;
+const StyledStorage = styled(StyledText)`
+  grid-area: storage;
+  justify-self: start;
+  align-self: end;
 `;
 
 const StyledValue = styled.div`
@@ -193,11 +207,18 @@ const StyledDateValue = styled(StyledValue)`
 const StyledButton = styled.button`
   background-color: transparent;
   border: none;
-  grid-area: delete;
   justify-self: end;
   align-self: end;
   margin: 1%;
+  grid-area: check;
+  position: relative;
+  right: -12px;
 `;
 const StyledEditButton = styled(StyledButton)`
   grid-area: edit;
+  position: static;
+`;
+const StyledDeleteButton = styled(StyledButton)`
+  grid-area: delete;
+  position: static;
 `;

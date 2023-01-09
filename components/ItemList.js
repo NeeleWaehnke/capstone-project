@@ -40,5 +40,5 @@ const StyledList = styled.ul`
   list-style: none;
   padding: 0;
   width: 90vw;
-  margin: 0 auto 0 auto; ;
+  margin: 0 auto 125px auto;
 `;

@@ -1,4 +1,4 @@
-import CheckIcon from '../public/assets/check.svg';
+import CheckIcon from '../public/assets/check-circle.svg';
 import styled from 'styled-components';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
@@ -43,7 +43,11 @@ export default function AddForm({ onAddItem, storages, currentStorage }) {
             placeholder="Qty."
           />
           <label htmlFor="storage"></label>
-          <select id="storage" name="storage" defaultValue={currentStorage}>
+          <InputStorage
+            id="storage"
+            name="storage"
+            defaultValue={currentStorage}
+          >
             {storages.map((storage) => {
               return (
                 <option key={storage.name} value={storage.name}>
@@ -51,7 +55,7 @@ export default function AddForm({ onAddItem, storages, currentStorage }) {
                 </option>
               );
             })}
-          </select>
+          </InputStorage>
           <StyledButton type="submit">
             <CheckIcon />
           </StyledButton>
@@ -69,36 +73,68 @@ export default function AddForm({ onAddItem, storages, currentStorage }) {
 }
 
 const StyledSection = styled.section`
-  position: sticky;
+  position: fixed;
   bottom: 0;
-  max-width: 100%;
+  width: 100%;
   margin: 4% 0 0 0;
   display: flex;
   justify-content: right;
 `;
 const StyledForm = styled.form`
-  border: 1px solid black;
-  background-color: #c4ced4;
+  background-color: #006daa;
   width: 100%;
+  height: 120px;
+  padding: 2% 0 2% 0;
+  display: grid;
+  grid-template-columns: 40% 40% 20%;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    'name date qty'
+    'place . .'
+    'category . check';
 `;
 const StyledButton = styled.button`
   background-color: transparent;
   border: none;
   position: absolute;
   bottom: 3px;
-  right: 10px;
-  fill: #ff4d52;
+  right: 3px;
+  grid-area: check;
+  align-self: end;
+  justify-self: end;
 `;
 
 const InputName = styled.input`
-  margin: 1%;
+  margin: 1% 1% 2% 3%;
+  padding: 1% 0.5% 1% 1%;
+  grid-area: name;
+  justify-self: center;
+  align-self: stretch;
+  display: flex;
+  width: 95%;
+  border: none;
+  border-radius: 5px;
+  background-color: #fcf7e9;
+  &:focus {
+    outline: #ff3c1a 2px solid;
+  }
 `;
-const InputDate = styled.input`
-  display: block;
-  margin: 1%;
+const InputDate = styled(InputName)`
+  grid-area: date;
 `;
-const InputQty = styled.input`
-  margin: 1%;
-  display: block;
-  width: 45px;
+const InputQty = styled(InputName)`
+  width: 50px;
+  grid-area: qty;
+  text-align: center;
+`;
+
+const InputStorage = styled.select`
+  margin: 2% 1% 1% 3%;
+  grid-area: place;
+  width: 95%;
+  padding: 1% 0.5% 1% 1%;
+  display: flex;
+  border: none;
+  border-radius: 5px;
+  background-color: #fcf7e9;
 `;

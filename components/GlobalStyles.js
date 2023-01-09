@@ -15,6 +15,7 @@ const GlobalStyles = createGlobalStyle`
     body {
         max-width: 100vw;
     overflow-x: hidden;
+    background-color: #acd9ec;
     }
 `;
 
