@@ -53,16 +53,16 @@ export default function ItemCard({
             defaultValue={name}
             placeholder="name"
           />
-          <label htmlFor="date"></label>
-          <StyledText>date:</StyledText>
+          <StyledText htmlFor="date">date:</StyledText>
+
           <StyledInputDate
             type="date"
             id="date"
             name="date"
             defaultValue={date}
           />
-          <label htmlFor="quantity"></label>
-          <StyledQty>Qty:</StyledQty>
+          <StyledQty htmlFor="quantity">Qty:</StyledQty>
+
           <StyledInputQty
             type="number"
             id="quantity"
@@ -113,7 +113,7 @@ export default function ItemCard({
 }
 
 const StyledItem = styled.li`
-  border: 1px solid black;
+  border-radius: 5px;
   margin: 1% 1% 2% 0;
   width: 100%;
   display: grid;
@@ -178,7 +178,7 @@ const StyledName = styled.h3`
   grid-area: name;
 `;
 
-const StyledText = styled.p`
+const StyledText = styled.label`
   margin: 2%;
   grid-area: date;
   justify-self: center;

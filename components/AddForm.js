@@ -73,10 +73,9 @@ export default function AddForm({ onAddItem, storages, currentStorage }) {
 }
 
 const StyledSection = styled.section`
-  position: sticky;
+  position: fixed;
   bottom: 0;
-  max-width: 100%;
-
+  width: 100%;
   margin: 4% 0 0 0;
   display: flex;
   justify-content: right;
@@ -84,7 +83,7 @@ const StyledSection = styled.section`
 const StyledForm = styled.form`
   background-color: #006daa;
   width: 100%;
-  max-height: 150px;
+  height: 120px;
   padding: 2% 0 2% 0;
   display: grid;
   grid-template-columns: 40% 40% 20%;
@@ -99,7 +98,7 @@ const StyledButton = styled.button`
   border: none;
   position: absolute;
   bottom: 3px;
-  right: 10px;
+  right: 3px;
   grid-area: check;
   align-self: end;
   justify-self: end;
@@ -116,6 +115,9 @@ const InputName = styled.input`
   border: none;
   border-radius: 5px;
   background-color: #fcf7e9;
+  &:focus {
+    outline: #ff3c1a 2px solid;
+  }
 `;
 const InputDate = styled(InputName)`
   grid-area: date;
