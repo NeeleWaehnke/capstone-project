@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import DeleteIcon from '../public/assets/delete-icon.svg';
 import EditIcon from '../public/assets/edit.svg';
 import CheckIcon from '../public/assets/check.svg';
-
 import { useState } from 'react';
 
 export default function ItemCard({

@@ -50,7 +50,7 @@ export default function AddForm({ onAddItem, storages, currentStorage }) {
           >
             {storages.map((storage) => {
               return (
-                <option key={storage.name} value={storage.name}>
+                <option key={storage.id} value={storage.name}>
                   {storage.name}
                 </option>
               );
