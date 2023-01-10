@@ -41,6 +41,7 @@ export default function Storage({ sortedItemsWithDate }) {
       })
     );
   }
+  console.log(currentItems);
 
   return (
     <>

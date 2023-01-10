@@ -1,7 +1,8 @@
 import { nanoid } from 'nanoid';
 import Link from 'next/link';
+import StorageCard from './StorageCard';
 
-export default function Storages({ storages, onStorage, items }) {
+export default function Storages({ storages, onStorage, items, onItems }) {
   function handleSubmitAdd(event) {
     event.preventDefault();
     const form = event.target.elements;
@@ -13,10 +14,21 @@ export default function Storages({ storages, onStorage, items }) {
 
     event.target.reset();
   }
-
-  function getNumberOfItems(place, items) {
-    const filteredItems = items.filter((item) => item.storage === place);
-    return filteredItems.length;
+  function handleEditStorage(updatedStorage, updatedItem) {
+    onStorage(
+      storages.map((storage) => {
+        if (storage.id === updatedStorage.id) {
+          return updatedStorage;
+        } else {
+          return storage;
+        }
+      })
+    );
+    onItems(updatedItem);
+  }
+  function handleRemoveStorage(id, otherItems) {
+    onStorage(storages.filter((storage) => storage.id !== id));
+    onItems(otherItems);
   }
 
   return (
@@ -24,18 +36,20 @@ export default function Storages({ storages, onStorage, items }) {
       <form onSubmit={handleSubmitAdd}>
         <label htmlFor="storage">Add a new storage option: </label>
         <input type="text" id="storage" name="storage" required />
-
         <button>Add</button>
       </form>
 
       {storages.map((storage) => {
         return (
-          <section key={storage.id}>
-            <Link href={`/${storage.name}`}>
-              <h3>{storage.name}</h3>
-            </Link>
-            <p> {getNumberOfItems(storage.name, items)} items</p>
-          </section>
+          <StorageCard
+            key={storage.id}
+            id={storage.id}
+            name={storage.name}
+            items={items}
+            onEditStorage={handleEditStorage}
+            onItems={onItems}
+            onRemoveStorage={handleRemoveStorage}
+          />
         );
       })}
     </>
