@@ -7,6 +7,7 @@ import { useState } from 'react';
 export default function ItemCard({
   name,
   date,
+  datetype,
   quantity,
   storage,
   onRemoveItem,
@@ -24,6 +25,7 @@ export default function ItemCard({
       id: id,
       quantity: form.quantity.value,
       storage: form.storage.value,
+      datetype: form.datetype.value,
     };
 
     onEditItem(updatedItem);
@@ -52,7 +54,7 @@ export default function ItemCard({
             defaultValue={name}
             placeholder="name"
           />
-          <StyledText htmlFor="date">date:</StyledText>
+          <StyledText htmlFor="date"></StyledText>
 
           <StyledInputDate
             type="date"
@@ -60,6 +62,24 @@ export default function ItemCard({
             name="date"
             defaultValue={date}
           />
+          <StyledRadio>
+            <InputRadio
+              type="radio"
+              id="best-before"
+              name="datetype"
+              value="best-before"
+              defaultChecked
+            />
+            <InputLabel htmlFor="best-before">best before</InputLabel>
+            <InputRadio2
+              type="radio"
+              id="stored-since"
+              name="datetype"
+              value="stored-since"
+              required
+            />
+            <InputLabel2 htmlFor="stored-since">stored since</InputLabel2>
+          </StyledRadio>
           <StyledQty htmlFor="quantity">Qty:</StyledQty>
 
           <StyledInputQty
@@ -87,8 +107,8 @@ export default function ItemCard({
         <StyledItem>
           <StyledName>{name}</StyledName>
           <StyledQty>Qty:</StyledQty>
-          <StyledValue>{quantity}</StyledValue>
-          <StyledText>date:</StyledText>
+          <StyledValue>{quantity}x</StyledValue>
+          <StyledText>{!datetype ? 'date' : datetype}:</StyledText>
           <StyledDateValue>{changeDate(date)}</StyledDateValue>
           <StyledStorage>{storage}</StyledStorage>
           <StyledEditButton
@@ -116,27 +136,27 @@ const StyledItem = styled.li`
   margin: 1% 1% 2% 0;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 30% 10% 50% 10%;
   grid-template-rows: 20px auto;
   grid-template-areas:
     'name qty date edit'
     'name qtyvalue datevalue edit'
-    'storage  . . delete  '
-    '. . . delete';
+    ' . . . delete  '
+    'storage . . delete';
   padding: 5px;
   background-color: #fcfffd;
 `;
 const StyledForm = styled.form`
-  border: 1px solid black;
+  border-radius: 5px;
   margin: 1% 1% 2% 0;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 20px auto;
+  grid-template-rows: 1fr auto;
   grid-template-areas:
-    'name qty date .'
+    'name qty radio .'
     'name qtyvalue datevalue .'
-    'storage . . check';
+    'storage . .  check';
 
   padding: 5px;
   background-color: #fcfffd;
@@ -145,11 +165,11 @@ const StyledForm = styled.form`
 const StyledInput = styled.input`
   margin: 2%;
   display: flex;
-  justify-self: start;
+  justify-self: center;
   align-self: end;
   grid-area: name;
   width: 100px;
-  height: 28px;
+  height: 23px;
 `;
 
 const StyledInputDate = styled(StyledInput)`
@@ -166,7 +186,7 @@ const StyledInputQty = styled(StyledInputDate)`
 
 const StyledSelector = styled.select`
   grid-area: storage;
-  height: fit-content;
+  height: 23px;
   align-self: center;
 `;
 
@@ -179,7 +199,7 @@ const StyledName = styled.h3`
 
 const StyledText = styled.label`
   margin: 2%;
-  grid-area: date;
+  // grid-area: date;
   justify-self: center;
   align-self: center;
 `;
@@ -206,18 +226,33 @@ const StyledDateValue = styled(StyledValue)`
 const StyledButton = styled.button`
   background-color: transparent;
   border: none;
-  justify-self: end;
+  justify-self: center;
   align-self: end;
   margin: 1%;
   grid-area: check;
   position: relative;
   right: -12px;
+  bottom: -15px;
 `;
 const StyledEditButton = styled(StyledButton)`
   grid-area: edit;
   position: static;
+  align-self: start;
 `;
 const StyledDeleteButton = styled(StyledButton)`
   grid-area: delete;
   position: static;
+`;
+const InputRadio = styled.input`
+  &:checked {
+    accent-color: #ff3c1a;
+  }
+`;
+
+const InputRadio2 = styled(InputRadio)``;
+
+const InputLabel = styled.label``;
+const InputLabel2 = styled(InputLabel)``;
+const StyledRadio = styled.div`
+  grid-area: radio;
 `;

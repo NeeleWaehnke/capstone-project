@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }) {
   const sortedItemsWithDate = includeDifference(dateSortedItems);
 
   const warningItems = sortedItemsWithDate.filter(
-    (item) => item.warningActive === true
+    (item) => item.warningActive === true && item.datetype === 'best-before'
   );
   return (
     <>

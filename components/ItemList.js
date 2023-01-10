@@ -23,6 +23,7 @@ export default function ItemList({
               id={item.id}
               name={item.name}
               date={item.date}
+              datetype={item.datetype}
               quantity={item.quantity}
               storage={item.storage}
               onRemoveItem={onRemoveItem}
