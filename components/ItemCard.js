@@ -70,15 +70,15 @@ export default function ItemCard({
               value="best-before"
               defaultChecked
             />
-            <InputLabel htmlFor="best-before">best before</InputLabel>
-            <InputRadio2
+            <label htmlFor="best-before">best before</label>
+            <InputRadio
               type="radio"
               id="stored-since"
               name="datetype"
               value="stored-since"
               required
             />
-            <InputLabel2 htmlFor="stored-since">stored since</InputLabel2>
+            <label htmlFor="stored-since">stored since</label>
           </StyledRadio>
           <StyledQty htmlFor="quantity">Qty:</StyledQty>
 
@@ -199,7 +199,6 @@ const StyledName = styled.h3`
 
 const StyledText = styled.label`
   margin: 2%;
-  // grid-area: date;
   justify-self: center;
   align-self: center;
 `;
@@ -249,10 +248,6 @@ const InputRadio = styled.input`
   }
 `;
 
-const InputRadio2 = styled(InputRadio)``;
-
-const InputLabel = styled.label``;
-const InputLabel2 = styled(InputLabel)``;
 const StyledRadio = styled.div`
   grid-area: radio;
 `;
