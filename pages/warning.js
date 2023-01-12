@@ -5,6 +5,7 @@ import useLocalStorageState from 'use-local-storage-state';
 export default function Warning({ warningItems }) {
   const [items, setItems] = useLocalStorageState('items');
   const [storages] = useLocalStorageState('storages');
+
   function handleRemoveItem(id) {
     setItems(items.filter((item) => item.id !== id));
   }

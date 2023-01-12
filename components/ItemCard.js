@@ -170,6 +170,9 @@ const StyledInput = styled.input`
   grid-area: name;
   width: 100px;
   height: 23px;
+  &:focus {
+    outline: #ff3c1a 2px solid;
+  }
 `;
 
 const StyledInputDate = styled(StyledInput)`
@@ -188,6 +191,9 @@ const StyledSelector = styled.select`
   grid-area: storage;
   height: 23px;
   align-self: center;
+  &:focus {
+    outline: #ff3c1a 2px solid;
+  }
 `;
 
 const StyledName = styled.h3`

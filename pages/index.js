@@ -12,6 +12,7 @@ export default function Home({
   return (
     <>
       <Header />
+
       <StoragesPage
         storages={storages}
         onStorage={onStorage}

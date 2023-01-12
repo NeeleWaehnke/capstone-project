@@ -3,6 +3,7 @@ import useLocalStorageState from 'use-local-storage-state';
 import Header from '../components/Header';
 import ItemList from '../components/ItemList';
 import AddForm from '../components/AddForm';
+import Navbar from '../components/Navbar';
 
 export default function Storage({ sortedItemsWithDate }) {
   const router = useRouter();
@@ -41,11 +42,11 @@ export default function Storage({ sortedItemsWithDate }) {
       })
     );
   }
-  console.log(currentItems);
 
   return (
     <>
       <Header />
+      <Navbar storages={storages} />
       <ItemList
         currentItems={currentItems}
         onRemoveItem={handleRemoveItem}

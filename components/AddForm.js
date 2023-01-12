@@ -158,6 +158,9 @@ const InputStorage = styled.select`
   height: 35px;
   align-self: center;
   background-color: #fcf7e9;
+  &:focus {
+    outline: #ff3c1a 2px solid;
+  }
 `;
 
 const InputRadio = styled.input`
