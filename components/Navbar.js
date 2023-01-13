@@ -24,7 +24,11 @@ export default function Navbar({ storages }) {
         {isMenuActive ? <CloseIcon /> : <MenuIcon />}
       </StyledButton>
       <StyledNavMenu>
-        <StyledLink href="/" key="Home">
+        <StyledLink
+          href="/"
+          key="Home"
+          prop={router.asPath === '/' ? { isactive } : null}
+        >
           Home
         </StyledLink>
         {storages.map((storage) => {
@@ -65,14 +69,14 @@ export default function Navbar({ storages }) {
 
 const StyledNav = styled.nav`
   background-color: #003559;
-  height: 50px;
-  margin-bottom: 2%;
-  overflow: hidden;
+  width: 100%;
+  grid-area: nav;
+  align-self: end;
+  justify-self: end;
 `;
 
 const StyledLink = styled(Link)`
-  float: left;
-  display: block;
+  display: inline-block;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -88,15 +92,19 @@ const StyledNavMenu = styled.section`
   @media (max-width: 600px) {
     display: none;
   }
+  float: right;
   display: flex;
-  align-items: center;
+  margin-right: 2%;
+  align-self: end;
+  justify-self: end;
 `;
 const StyledNavMenuMobile = styled.section`
   @media (max-width: 600px) {
     display: flex;
   }
+
   position: fixed;
-  top: 15%;
+  top: 5%;
   right: 0;
   height: fit-content;
   width: 50%;
@@ -109,7 +117,7 @@ const StyledLinkMobile = styled(StyledLink)`
   display: block;
   color: #f2f2f2;
   text-align: center;
-
+  margin-right: 2%;
   text-decoration: none;
   font-size: 17px;
   background-color: ${(props) => (props.prop ? '#ff3c1a' : 'transparent')};
