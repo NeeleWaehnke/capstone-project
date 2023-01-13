@@ -105,12 +105,13 @@ const StyledForm = styled.form`
   padding: 2% 0 2% 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   grid-template-areas:
     'names place qty '
-    'date  radio  radio'
-    '. .  check';
+    'date  radio check'
+    '. . .';
 `;
+
 const StyledButton = styled.button`
   background-color: transparent;
   border: none;
