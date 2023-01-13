@@ -3,17 +3,6 @@ import styled from 'styled-components';
 import StorageCard from './StorageCard';
 
 export default function Storages({ storages, onStorage, items, onItems }) {
-  function handleSubmitAdd(event) {
-    event.preventDefault();
-    const form = event.target.elements;
-    const newStorage = {
-      name: form.storage.value,
-      id: nanoid(),
-    };
-    onStorage([newStorage, ...storages]);
-
-    event.target.reset();
-  }
   function handleEditStorage(updatedStorage, updatedItem) {
     onStorage(
       storages.map((storage) => {
