@@ -12,14 +12,13 @@ export default function Home({
   return (
     <>
       <Header />
-
+      <WarningPage warningItems={warningItems} />
       <StoragesPage
         storages={storages}
         onStorage={onStorage}
         items={items}
         onItems={onItems}
       />
-      <WarningPage warningItems={warningItems} />
     </>
   );
 }
