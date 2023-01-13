@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import Link from 'next/link';
+import styled from 'styled-components';
 import StorageCard from './StorageCard';
 
 export default function Storages({ storages, onStorage, items, onItems }) {
@@ -33,12 +33,6 @@ export default function Storages({ storages, onStorage, items, onItems }) {
 
   return (
     <>
-      <form onSubmit={handleSubmitAdd}>
-        <label htmlFor="storage">Add a new storage option: </label>
-        <input type="text" id="storage" name="storage" required />
-        <button>Add</button>
-      </form>
-
       {storages.map((storage) => {
         return (
           <StorageCard
