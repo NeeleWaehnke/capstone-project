@@ -1,6 +1,8 @@
 import StoragesPage from '../components/StoragesPage';
 import Header from '../components/Header';
 import WarningPage from '../components/WarningPage';
+import AddStorageForm from '../components/AddStorage';
+import styled from 'styled-components';
 
 export default function Home({
   storages,
@@ -11,14 +13,22 @@ export default function Home({
 }) {
   return (
     <>
-      <Header />
-      <WarningPage warningItems={warningItems} />
-      <StoragesPage
-        storages={storages}
-        onStorage={onStorage}
-        items={items}
-        onItems={onItems}
-      />
+      <Header storages={storages} />
+      <StyledDiv>
+        <WarningPage warningItems={warningItems} />
+        <StoragesPage
+          storages={storages}
+          onStorage={onStorage}
+          items={items}
+          onItems={onItems}
+        />
+        <AddStorageForm onStorage={onStorage} />
+      </StyledDiv>
     </>
   );
 }
+
+const StyledDiv = styled.div`
+  margin-top: 150px;
+  margin-bottom: 75px;
+`;
