@@ -12,7 +12,9 @@ export default function Navbar({ storages }) {
     yes: '#Ff3c1a',
     no: 'transparent',
   };
-
+  if (!storages) {
+    return null;
+  }
   return (
     <StyledNav>
       <StyledButton
