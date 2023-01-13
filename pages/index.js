@@ -29,6 +29,6 @@ export default function Home({
 }
 
 const StyledDiv = styled.div`
-  margin-top: 150px;
+  margin-top: 100px;
   margin-bottom: 75px;
 `;

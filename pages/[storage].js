@@ -64,5 +64,5 @@ export default function Storage({ sortedItemsWithDate }) {
 }
 
 const StyledDiv = styled.div`
-  margin-top: 150px;
+  margin-top: 100px;
 `;
