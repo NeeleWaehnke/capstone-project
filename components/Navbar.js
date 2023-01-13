@@ -77,7 +77,7 @@ const StyledLink = styled(Link)`
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 22px;
   background-color: ${(props) => (props.prop ? '#ff3c1a' : 'transparent')};
   @media (max-width: 600px) {
     display: none;
@@ -102,15 +102,14 @@ const StyledNavMenuMobile = styled.section`
   width: 50%;
   flex-flow: column nowrap;
   justify-content: center;
-
   background-color: #003559;
 `;
-const StyledLinkMobile = styled(Link)`
+const StyledLinkMobile = styled(StyledLink)`
   float: left;
   display: block;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+
   text-decoration: none;
   font-size: 17px;
   background-color: ${(props) => (props.prop ? '#ff3c1a' : 'transparent')};
