@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import AddBoxIcon from '../public/assets/add-box.svg';
+import { nanoid } from 'nanoid';
 
-export default function AddStorageForm({ onStorage }) {
+export default function AddStorageForm({ onStorage, storages }) {
   function handleSubmitAdd(event) {
     event.preventDefault();
     const form = event.target.elements;

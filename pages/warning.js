@@ -1,6 +1,7 @@
 import Header from '../components/Header';
 import ItemList from '../components/ItemList';
 import useLocalStorageState from 'use-local-storage-state';
+import styled from 'styled-components';
 
 export default function Warning({ warningItems }) {
   const [items, setItems] = useLocalStorageState('items');
@@ -21,16 +22,23 @@ export default function Warning({ warningItems }) {
       })
     );
   }
-
+  console.log(storages);
   return (
     <>
-      <Header />
-      <ItemList
-        currentItems={warningItems}
-        onRemoveItem={handleRemoveItem}
-        onEditItem={handleEditItem}
-        storages={storages}
-      />
+      <Header storages={storages} />
+      <StyledDiv>
+        <ItemList
+          currentItems={warningItems}
+          onRemoveItem={handleRemoveItem}
+          onEditItem={handleEditItem}
+          storages={storages}
+        />
+      </StyledDiv>
     </>
   );
 }
+
+const StyledDiv = styled.div`
+  margin-top: 100px;
+  margin-bottom: 75px;
+`;

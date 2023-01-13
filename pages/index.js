@@ -22,7 +22,7 @@ export default function Home({
           items={items}
           onItems={onItems}
         />
-        <AddStorageForm onStorage={onStorage} />
+        <AddStorageForm onStorage={onStorage} storages={storages} />
       </StyledDiv>
     </>
   );

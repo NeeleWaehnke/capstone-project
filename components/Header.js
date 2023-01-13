@@ -23,6 +23,7 @@ const StyledHeader = styled.header`
   grid-template-columns: 45% 55%;
   grid-template-rows: 12vh;
   justify-items: start;
+  z-index: 555;
 `;
 const StyledTitle = styled.h1`
   color: #fcfffd;

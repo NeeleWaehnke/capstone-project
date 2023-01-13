@@ -127,7 +127,7 @@ const StyledLinkMobile = styled(StyledLink)`
 `;
 
 const StyledButton = styled.button`
-  z-index: 333;
+  z-index: 555;
   position: relative;
   top: ${(props) => (props.isMenuActive ? '0' : '-5px')};
   border: none;
