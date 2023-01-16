@@ -30,8 +30,11 @@ export default function Home({
 
 const StyledDiv = styled.div`
   @media (min-height: 700px) {
-    margin-top: 120px;
+    margin-top: 130px;
+  }
+  @media (min-height: 1000px) {
+    margin-top: 170px;
   }
   margin-top: 100px;
-  margin-bottom: 75px;
+  margin-bottom: 100px;
 `;
