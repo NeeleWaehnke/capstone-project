@@ -32,7 +32,7 @@ const StyledCardContainer = styled.section`
   grid-template-rows: 50% 50%;
   grid-template-columns: 1.5fr 1fr 1fr 1fr;
 `;
-const StyledTitle = styled.h3`
+const StyledTitle = styled.h2`
   grid-area: name;
   margin: 4% 1% 1% 4%;
   align-self: center;

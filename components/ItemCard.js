@@ -196,11 +196,12 @@ const StyledSelector = styled.select`
   }
 `;
 
-const StyledName = styled.h3`
+const StyledName = styled.h2`
   margin: 2%;
   justify-self: start;
   align-self: center;
   grid-area: name;
+  font-size: 1.3rem;
 `;
 
 const StyledText = styled.label`
