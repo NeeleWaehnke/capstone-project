@@ -3,7 +3,7 @@ import useLocalStorageState from 'use-local-storage-state';
 import Header from '../components/Header';
 import ItemList from '../components/ItemList';
 import AddForm from '../components/AddForm';
-import styled from 'styled-components';
+import Container from '../components/Container';
 
 export default function Storage({ sortedItemsWithDate }) {
   const router = useRouter();
@@ -46,14 +46,14 @@ export default function Storage({ sortedItemsWithDate }) {
   return (
     <>
       <Header storages={storages} />
-      <StyledDiv>
+      <Container>
         <ItemList
           currentItems={currentItems}
           onRemoveItem={handleRemoveItem}
           onEditItem={handleEditItem}
           storages={storages}
         />
-      </StyledDiv>
+      </Container>
       <AddForm
         onAddItem={handleAddItem}
         storages={storages}
@@ -62,7 +62,3 @@ export default function Storage({ sortedItemsWithDate }) {
     </>
   );
 }
-
-const StyledDiv = styled.div`
-  margin-top: 100px;
-`;
