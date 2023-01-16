@@ -99,7 +99,6 @@ const StyledButton = styled.button`
   align-self: end;
   margin: 1%;
   grid-area: button;
-  z-index: 1;
 `;
 
 const StyledDeleteButton = styled(StyledButton)`
