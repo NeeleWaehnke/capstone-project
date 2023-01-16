@@ -36,14 +36,12 @@ const StyledTitle = styled.h3`
   grid-area: name;
   margin: 4% 1% 1% 4%;
   align-self: center;
-  justify-self: start;
   font-size: 1.5rem;
 `;
 const StyledItemCounter = styled.p`
   grid-area: items;
   text-align: center;
   align-self: center;
-  justify-self: start;
 `;
 const StyledArrowLink = styled(Link)`
   grid-area: link;

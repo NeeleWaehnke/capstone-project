@@ -78,7 +78,6 @@ const StyledNav = styled.nav`
 `;
 
 const StyledLink = styled(Link)`
-  display: inline-block;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
