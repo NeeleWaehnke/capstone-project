@@ -29,6 +29,9 @@ export default function Home({
 }
 
 const StyledDiv = styled.div`
+  @media (min-height: 700px) {
+    margin-top: 120px;
+  }
   margin-top: 100px;
   margin-bottom: 75px;
 `;
