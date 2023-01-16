@@ -21,15 +21,17 @@ const StyledHeader = styled.header`
   display: grid;
   grid-template-areas: 'heading nav';
   grid-template-columns: 45% 55%;
-  grid-template-rows: 12vh;
+  grid-template-rows: auto;
   justify-items: start;
   z-index: 555;
+  @media (max-width: 340px) {
+    min-height: 100px;
+  }
 `;
 const StyledTitle = styled.h1`
   color: #fcfffd;
-
   grid-area: heading;
   justify-self: start;
-
   margin-left: 3%;
+  position: sticky;
 `;

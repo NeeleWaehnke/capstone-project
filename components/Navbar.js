@@ -103,10 +103,12 @@ const StyledNavMenuMobile = styled.section`
   @media (max-width: 600px) {
     display: flex;
   }
-
+  @media (max-width: 340px) {
+    top: 15%;
+  }
   position: fixed;
-  top: 5%;
-  right: 0;
+  top: 10%;
+  right: 0px;
   height: fit-content;
   width: 50%;
   flex-flow: column nowrap;
@@ -129,12 +131,14 @@ const StyledLinkMobile = styled(StyledLink)`
 
 const StyledButton = styled.button`
   z-index: 555;
-  position: relative;
-  top: ${(props) => (props.isMenuActive ? '0' : '-5px')};
   border: none;
   background-color: transparent;
   margin: 2%;
+  position: relative;
+  top: ${(props) => (props.isMenuActive ? '-8px' : '0')};
   display: none;
+  justify-self: end;
+  align-self: end;
   @media (max-width: 600px) {
     display: block;
     float: right;
