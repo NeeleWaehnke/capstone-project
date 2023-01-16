@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import DeleteIcon from '../public/assets/delete-icon.svg';
 import EditIcon from '../public/assets/edit.svg';
 import CheckIcon from '../public/assets/check.svg';
+import ArrowIcon from '../public/assets/arrow-icon.svg';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -68,13 +69,11 @@ export default function StorageCard({
           </button>
         </form>
       ) : (
-        <section>
-          <Link href={`/${name}`}>
-            <h3>{name}</h3>
-          </Link>
-          <StyledButton onClick={() => handleRemoveConfirmation(items)}>
+        <StyledCardContainer>
+          <StyledTitle>{name}</StyledTitle>
+          <StyledDeleteButton onClick={() => handleRemoveConfirmation(items)}>
             <DeleteIcon />
-          </StyledButton>
+          </StyledDeleteButton>
           <StyledButton
             onClick={() => {
               setIsEditing(true);
@@ -82,9 +81,13 @@ export default function StorageCard({
           >
             <EditIcon />
           </StyledButton>
-
-          <p> {getNumberOfItems(name, items)} items</p>
-        </section>
+          <StyledItemCounter>
+            {getNumberOfItems(name, items)} items
+          </StyledItemCounter>
+          <StyledArrowLink href={`/${name}`}>
+            <ArrowIcon />
+          </StyledArrowLink>
+        </StyledCardContainer>
       )}
     </>
   );
@@ -95,4 +98,47 @@ const StyledButton = styled.button`
   justify-self: end;
   align-self: end;
   margin: 1%;
+  grid-area: button;
+`;
+
+const StyledDeleteButton = styled(StyledButton)`
+  position: relative;
+  bottom: 30px;
+`;
+
+const StyledCardContainer = styled.section`
+  border-radius: 5px;
+  background-color: #fcfffd;
+  width: 90vw;
+  height: 75px;
+  margin: 0 auto 2% auto;
+  display: grid;
+  grid-template-areas:
+    'name  items button link'
+    'name  items  button link';
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+`;
+
+const StyledTitle = styled.h3`
+  grid-area: name;
+  margin: 4% 1% 1% 4%;
+  align-self: center;
+  justify-self: start;
+  font-size: 1.5rem;
+`;
+
+const StyledItemCounter = styled.p`
+  grid-area: items;
+  text-align: center;
+  align-self: center;
+  justify-self: center;
+`;
+const StyledArrowLink = styled(Link)`
+  position: relative;
+  top: 2px;
+  grid-area: link;
+  width: 50px;
+  align-self: center;
+  justify-self: end;
 `;

@@ -97,20 +97,22 @@ const StyledSection = styled.section`
   margin: 4% 0 0 0;
   display: flex;
   justify-content: right;
+  height: auto;
 `;
 const StyledForm = styled.form`
   background-color: #006daa;
   width: 100%;
-  height: 120px;
+
   padding: 2% 0 2% 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   grid-template-areas:
     'names place qty '
-    'date  radio  radio'
-    '. .  check';
+    'date  radio check'
+    '. . .';
 `;
+
 const StyledButton = styled.button`
   background-color: transparent;
   border: none;
