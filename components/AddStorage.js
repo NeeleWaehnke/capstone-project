@@ -43,8 +43,11 @@ const StyledAddStorage = styled.form`
 `;
 const StyledInput = styled.input`
   width: 80vw;
+  border: none;
+  border-radius: 5px;
   position: relative;
   bottom: 5px;
+  height: 25px;
   left: 5px;
   &:focus {
     outline: #ff3c1a 2px solid;
