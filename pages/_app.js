@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   useEffect(() => {
-    getItems();
+    handleGetItems();
   }, []);
 
   async function handleGetStorages() {
@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
   }
 
   useEffect(() => {
-    getStorages();
+    handleGetStorages();
   }, []);
 
   const dateSortedItems = items.slice().sort(function (a, b) {
