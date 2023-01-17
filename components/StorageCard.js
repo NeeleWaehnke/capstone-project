@@ -55,19 +55,19 @@ export default function StorageCard({
   return (
     <>
       {isEditing === true ? (
-        <form onSubmit={(event) => handleSubmitEdit(event, items, name)}>
+        <StyledForm onSubmit={(event) => handleSubmitEdit(event, items, name)}>
           <label htmlFor="storage"></label>
-          <input
+          <StyledInput
             type="text"
             id="storage"
             name="storage"
             defaultValue={name}
             required
           />
-          <button>
-            <CheckIcon />
-          </button>
-        </form>
+          <StyledButton>
+            <StyledCheckIcon />
+          </StyledButton>
+        </StyledForm>
       ) : (
         <StyledCardContainer>
           <StyledTitle>{name}</StyledTitle>
@@ -142,4 +142,31 @@ const StyledArrowLink = styled(Link)`
   width: 50px;
   align-self: center;
   justify-self: end;
+`;
+
+const StyledForm = styled.form`
+  border-radius: 5px;
+  background-color: #fcfffd;
+  width: 90vw;
+  height: 75px;
+  margin: 0 auto 2% auto;
+  display: grid;
+  grid-template-areas:
+    'name  . button'
+    'name  .  button';
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 2fr 1fr 1fr;
+`;
+
+const StyledCheckIcon = styled(CheckIcon)`
+  width: 60px;
+  height: 60px;
+`;
+
+const StyledInput = styled.input`
+  grid-area: name;
+  height: 60px;
+  align-self: center;
+  justify-self: center;
+  font-size: 1.3rem;
 `;
