@@ -82,7 +82,8 @@ export default function StorageCard({
             <EditIcon />
           </StyledButton>
           <StyledItemCounter>
-            {getNumberOfItems(name, items)} items
+            {getNumberOfItems(name, items)}{' '}
+            {getNumberOfItems(name, items) === 1 ? 'item' : 'items'}
           </StyledItemCounter>
           <StyledArrowLink href={`/${name}`}>
             <ArrowIcon />

@@ -15,7 +15,10 @@ export default function WarningPage({ warningItems }) {
         <ArrowIcon />
       </StyledArrowLink>
 
-      <StyledItemCounter> {warningItems.length} items</StyledItemCounter>
+      <StyledItemCounter>
+        {' '}
+        {warningItems.length} {warningItems.length === 1 ? 'item' : 'items'}
+      </StyledItemCounter>
     </StyledCardContainer>
   );
 }
