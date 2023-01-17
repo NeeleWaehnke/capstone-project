@@ -1,24 +1,32 @@
 import GlobalStyles from '../components/GlobalStyles';
 import Head from 'next/head';
-import useLocalStorageState from 'use-local-storage-state';
-import { dummyitems } from '../lib/data';
-import { dummystorage } from '../lib/storageData';
 import { differenceInCalendarDays } from 'date-fns';
+import { useEffect, useState } from 'react';
 
 function MyApp({ Component, pageProps }) {
-  const [items, setItems] = useLocalStorageState('items', {
-    defaultValue: dummyitems,
-  });
-  const [storages, setStorages] = useLocalStorageState('storages', {
-    defaultValue: dummystorage,
-  });
-  function handleStorage(storage) {
-    setStorages(storage);
+  const [items, setItems] = useState([]);
+  const [storages, setStorages] = useState([]);
+
+  async function getItems() {
+    const response = await fetch('/api/items');
+    const items = await response.json();
+    setItems(items);
   }
 
-  function handleItems(item) {
-    setItems(item);
+  useEffect(() => {
+    getItems();
+  }, []);
+
+  async function getStorages() {
+    const response = await fetch('/api/storages');
+    const storages = await response.json();
+    setStorages(storages);
   }
+
+  useEffect(() => {
+    getStorages();
+  }, []);
+
   const dateSortedItems = items.slice().sort(function (a, b) {
     const date1 = new Date(a.date);
     const date2 = new Date(b.date);
@@ -55,9 +63,9 @@ function MyApp({ Component, pageProps }) {
       <Component
         {...pageProps}
         items={items}
+        onGetItems={getItems}
         storages={storages}
-        onItems={handleItems}
-        onStorage={handleStorage}
+        onGetStorages={getStorages}
         warningItems={warningItems}
         sortedItemsWithDate={sortedItemsWithDate}
       />

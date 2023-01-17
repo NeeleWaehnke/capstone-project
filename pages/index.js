@@ -7,22 +7,27 @@ import styled from 'styled-components';
 export default function Home({
   storages,
   items,
-  onStorage,
+  onGetStorages,
   warningItems,
-  onItems,
+  onGetItems,
 }) {
   return (
     <>
       <Header storages={storages} />
       <StyledDiv>
-        <WarningPage warningItems={warningItems} />
+        <WarningPage
+          warningItems={warningItems}
+          items={items}
+          storages={storages}
+          onGetItems={onGetItems}
+        />
         <StoragesPage
           storages={storages}
-          onStorage={onStorage}
+          onGetStorages={onGetStorages}
           items={items}
-          onItems={onItems}
+          onGetItems={onGetItems}
         />
-        <AddStorageForm onStorage={onStorage} storages={storages} />
+        <AddStorageForm onGetStorages={onGetStorages} storages={storages} />
       </StyledDiv>
     </>
   );

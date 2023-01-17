@@ -8,6 +8,7 @@ const itemSchema = new Schema({
   quantity: { type: String, required: false },
   storage: { type: String, required: true },
   warningActive: { type: Boolean, required: false },
+  datetype: { type: String, required: true },
 });
 
 const Item = mongoose.models.Item || mongoose.model('Item', itemSchema);

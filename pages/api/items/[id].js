@@ -20,6 +20,7 @@ export default async function handler(req, res) {
       return res.status(404).json({ message: 'not found' });
     }
   } else if (req.method === 'PUT') {
+    const id = req.query.id;
     const updatedItem = await Item.findByIdAndUpdate(
       id,
       {
@@ -27,6 +28,7 @@ export default async function handler(req, res) {
         date: req.body.date,
         quantity: req.body.quantity,
         storage: req.body.storage,
+        datetype: req.body.datetype,
       },
       { returnDocument: 'after' }
     );
