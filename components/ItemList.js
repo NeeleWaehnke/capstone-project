@@ -40,4 +40,7 @@ const StyledList = styled.ul`
   padding: 0;
   width: 90vw;
   margin: 0 auto 125px auto;
+  @media (min-width: 900px) {
+    width: 80vw;
+  }
 `;
