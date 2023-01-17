@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
   const [items, setItems] = useState([]);
   const [storages, setStorages] = useState([]);
 
-  async function getItems() {
+  async function handleGetItems() {
     const response = await fetch('/api/items');
     const items = await response.json();
     setItems(items);
@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
     getItems();
   }, []);
 
-  async function getStorages() {
+  async function handleGetStorages() {
     const response = await fetch('/api/storages');
     const storages = await response.json();
     setStorages(storages);
@@ -63,9 +63,9 @@ function MyApp({ Component, pageProps }) {
       <Component
         {...pageProps}
         items={items}
-        onGetItems={getItems}
+        onGetItems={handleGetItems}
         storages={storages}
-        onGetStorages={getStorages}
+        onGetStorages={handleGetStorages}
         warningItems={warningItems}
         sortedItemsWithDate={sortedItemsWithDate}
       />

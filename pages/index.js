@@ -15,12 +15,7 @@ export default function Home({
     <>
       <Header storages={storages} />
       <StyledDiv>
-        <WarningPage
-          warningItems={warningItems}
-          items={items}
-          storages={storages}
-          onGetItems={onGetItems}
-        />
+        <WarningPage warningItems={warningItems} />
         <StoragesPage
           storages={storages}
           onGetStorages={onGetStorages}
