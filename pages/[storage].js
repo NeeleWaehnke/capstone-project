@@ -1,16 +1,17 @@
 import { useRouter } from 'next/router';
-import useLocalStorageState from 'use-local-storage-state';
 import Header from '../components/Header';
 import ItemList from '../components/ItemList';
 import AddForm from '../components/AddForm';
 import styled from 'styled-components';
 
-export default function Storage({ sortedItemsWithDate }) {
+export default function Storage({
+  sortedItemsWithDate,
+  onGetItems,
+  storages,
+  items,
+}) {
   const router = useRouter();
   const { storage } = router.query;
-
-  const [storages] = useLocalStorageState('storages');
-  const [items, setItems] = useLocalStorageState('items');
 
   if (!storages || !items) {
     return null;
@@ -23,24 +24,33 @@ export default function Storage({ sortedItemsWithDate }) {
   if (!currentItems) {
     return null;
   }
-  function handleAddItem(newItem) {
-    setItems([{ ...newItem }, ...items]);
+  async function handleAddItem(newItem) {
+    await fetch('/api/items', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newItem),
+    });
+    onGetItems();
   }
 
-  function handleRemoveItem(id) {
-    setItems(items.filter((item) => item.id !== id));
+  async function handleRemoveItem(id) {
+    await fetch('/api/items/' + id, {
+      method: 'DELETE',
+    });
+    onGetItems();
   }
 
-  function handleEditItem(updatedItem) {
-    setItems(
-      items.map((item) => {
-        if (item.id === updatedItem.id) {
-          return updatedItem;
-        } else {
-          return item;
-        }
-      })
-    );
+  async function handleEditItem(editedItem) {
+    await fetch('api/items/' + editedItem.id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(editedItem),
+    });
+    onGetItems();
   }
 
   return (

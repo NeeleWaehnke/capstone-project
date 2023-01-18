@@ -7,9 +7,9 @@ import styled from 'styled-components';
 export default function Home({
   storages,
   items,
-  onStorage,
+  onGetStorages,
   warningItems,
-  onItems,
+  onGetItems,
 }) {
   return (
     <>
@@ -18,11 +18,11 @@ export default function Home({
         <WarningPage warningItems={warningItems} />
         <StoragesPage
           storages={storages}
-          onStorage={onStorage}
+          onGetStorages={onGetStorages}
           items={items}
-          onItems={onItems}
+          onGetItems={onGetItems}
         />
-        <AddStorageForm onStorage={onStorage} storages={storages} />
+        <AddStorageForm onGetStorages={onGetStorages} storages={storages} />
       </StyledDiv>
     </>
   );
