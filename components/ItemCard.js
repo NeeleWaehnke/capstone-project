@@ -19,7 +19,7 @@ export default function ItemCard({
   function handleEditSubmit(event) {
     event.preventDefault();
     const form = event.target.elements;
-    const updatedItem = {
+    const editedItem = {
       name: form.name.value,
       date: form.date.value,
       id: id,
@@ -28,7 +28,7 @@ export default function ItemCard({
       datetype: form.datetype.value,
     };
 
-    onEditItem(updatedItem);
+    onEditItem(editedItem);
     setIsEditing(false);
   }
 
@@ -107,7 +107,7 @@ export default function ItemCard({
         <StyledItem>
           <StyledName>{name}</StyledName>
           <StyledQty>Qty:</StyledQty>
-          <StyledValue>{quantity}x</StyledValue>
+          <StyledValue>{quantity}</StyledValue>
           <StyledText>{!datetype ? 'date' : datetype}:</StyledText>
           <StyledDateValue>{changeDate(date)}</StyledDateValue>
           <StyledStorage>{storage}</StyledStorage>

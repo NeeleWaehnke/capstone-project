@@ -3,26 +3,24 @@ import ItemList from '../components/ItemList';
 import useLocalStorageState from 'use-local-storage-state';
 import Container from '../components/Container';
 
-export default function Warning({ warningItems }) {
-  const [items, setItems] = useLocalStorageState('items');
-  const [storages] = useLocalStorageState('storages');
-
-  function handleRemoveItem(id) {
-    setItems(items.filter((item) => item.id !== id));
+export default function Warning({ warningItems, onGetItems, storages, items }) {
+  async function handleRemoveItem(id) {
+    await fetch('/api/items/' + id, {
+      method: 'DELETE',
+    });
+    onGetItems();
+  }
+  async function handleEditItem(editedItem) {
+    await fetch('api/items/' + editedItem.id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(editedItem),
+    });
+    onGetItems();
   }
 
-  function handleEditItem(updatedItem) {
-    setItems(
-      items.map((item) => {
-        if (item.id === updatedItem.id) {
-          return updatedItem;
-        } else {
-          return item;
-        }
-      })
-    );
-  }
-  console.log(storages);
   return (
     <>
       <Header storages={storages} />

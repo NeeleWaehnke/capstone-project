@@ -1,16 +1,25 @@
 import styled from 'styled-components';
 import AddBoxIcon from '../public/assets/add-box.svg';
-import { nanoid } from 'nanoid';
 
-export default function AddStorageForm({ onStorage, storages }) {
+export default function AddStorageForm({ onGetStorages }) {
+  async function handleAddStorage(newStorage) {
+    await fetch('/api/storages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newStorage),
+    });
+    onGetStorages();
+  }
+
   function handleSubmitAdd(event) {
     event.preventDefault();
     const form = event.target.elements;
     const newStorage = {
       name: form.storage.value,
-      id: nanoid(),
     };
-    onStorage([newStorage, ...storages]);
+    handleAddStorage(newStorage);
 
     event.target.reset();
   }

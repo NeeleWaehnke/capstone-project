@@ -12,7 +12,7 @@ export default function StorageCard({
   items,
   onEditStorage,
   onRemoveStorage,
-  onItems,
+  onGetItems,
 }) {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -20,35 +20,23 @@ export default function StorageCard({
     const filteredItems = items.filter((item) => item.storage === place);
     return filteredItems.length;
   }
-  function handleSubmitEdit(event, items, name) {
+  function handleSubmitEdit(event, name, id) {
     event.preventDefault();
     const form = event.target.elements;
-    const updatedStorage = {
+    const editedStorage = {
       name: form.storage.value,
       id: id,
     };
-    let updatedItems = [];
-    items.forEach((item) => {
-      if (item.storage === name) {
-        updatedItems.push({
-          ...item,
-          storage: form.storage.value,
-        });
-      } else {
-        updatedItems.push({ ...item });
-      }
-      onEditStorage(updatedStorage, updatedItems);
-    });
+    const oldStorage = name;
+    const newStorage = form.storage.value;
 
+    onEditStorage(editedStorage, oldStorage, newStorage);
     setIsEditing(false);
   }
 
-  function handleRemoveConfirmation(items) {
+  function handleRemoveConfirmation() {
     if (confirm('Deleting this page deletes included items')) {
-      const otherItems = items.filter((item) => item.storage !== name);
-      onRemoveStorage(id, otherItems);
-    } else {
-      null;
+      onRemoveStorage(id, name);
     }
   }
 
@@ -71,7 +59,7 @@ export default function StorageCard({
       ) : (
         <StyledCardContainer>
           <StyledTitle>{name}</StyledTitle>
-          <StyledDeleteButton onClick={() => handleRemoveConfirmation(items)}>
+          <StyledDeleteButton onClick={() => handleRemoveConfirmation()}>
             <DeleteIcon />
           </StyledDeleteButton>
           <StyledButton

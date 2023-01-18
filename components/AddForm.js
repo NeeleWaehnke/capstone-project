@@ -1,6 +1,5 @@
 import CheckIcon from '../public/assets/check-circle.svg';
 import styled from 'styled-components';
-import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import AddButton from './AddButton';
 
@@ -15,7 +14,6 @@ export default function AddForm({ onAddItem, storages, currentStorage }) {
       date: form.date.value,
       quantity: form.quantity.value,
       storage: form.storage.value,
-      id: nanoid(),
       datetype: form.datetype.value,
     };
     onAddItem(newItem);

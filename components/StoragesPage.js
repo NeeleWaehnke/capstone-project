@@ -1,23 +1,38 @@
-import { nanoid } from 'nanoid';
-import styled from 'styled-components';
 import StorageCard from './StorageCard';
 
-export default function Storages({ storages, onStorage, items, onItems }) {
-  function handleEditStorage(updatedStorage, updatedItem) {
-    onStorage(
-      storages.map((storage) => {
-        if (storage.id === updatedStorage.id) {
-          return updatedStorage;
-        } else {
-          return storage;
-        }
-      })
-    );
-    onItems(updatedItem);
+export default function Storages({
+  storages,
+  onGetStorages,
+  items,
+  onGetItems,
+}) {
+  async function handleRemoveStorage(id, storageToDelete) {
+    await fetch('/api/storages/' + id, {
+      method: 'DELETE',
+    }),
+      await fetch('api/items/', {
+        method: 'DELETE',
+        body: storageToDelete,
+      });
+
+    onGetStorages();
+    onGetItems();
   }
-  function handleRemoveStorage(id, otherItems) {
-    onStorage(storages.filter((storage) => storage.id !== id));
-    onItems(otherItems);
+
+  async function handleEditStorage(editedStorage, oldStorage, newStorage) {
+    await fetch('api/storages/' + editedStorage.id, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(editedStorage),
+    });
+    await fetch('api/items', {
+      method: 'PUT',
+      body: [oldStorage, newStorage],
+    });
+    onGetStorages();
+    onGetItems();
   }
 
   return (
@@ -30,7 +45,7 @@ export default function Storages({ storages, onStorage, items, onItems }) {
             name={storage.name}
             items={items}
             onEditStorage={handleEditStorage}
-            onItems={onItems}
+            onGetItems={onGetItems}
             onRemoveStorage={handleRemoveStorage}
           />
         );
