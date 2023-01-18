@@ -9,6 +9,7 @@ const itemSchema = new Schema({
   storage: { type: String, required: true },
   warningActive: { type: Boolean, required: false },
   datetype: { type: String, required: true },
+  user: { type: String },
 });
 
 const Item = mongoose.models.Item || mongoose.model('Item', itemSchema);
