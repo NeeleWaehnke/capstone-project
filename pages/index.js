@@ -23,7 +23,7 @@ export default function Home({
           onGetItems={onGetItems}
         />
         <AddStorageForm onGetStorages={onGetStorages} storages={storages} />
-      </StyledDiv>
+      </Container>
     </>
   );
 }
