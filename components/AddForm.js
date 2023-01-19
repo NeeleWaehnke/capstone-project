@@ -94,13 +94,15 @@ const StyledSection = styled.section`
   width: 100%;
   margin: 4% 0 0 0;
   display: flex;
+  background-color: #006daa;
   justify-content: right;
   height: auto;
 `;
 const StyledForm = styled.form`
   background-color: #006daa;
   width: 100%;
-
+  margin-bottom: 4%;
+  margin-left: 2%;
   padding: 2% 0 2% 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -115,7 +117,7 @@ const StyledButton = styled.button`
   background-color: transparent;
   border: none;
   position: absolute;
-  bottom: 3px;
+  bottom: 10px;
   right: 3px;
   grid-area: check;
   align-self: end;
