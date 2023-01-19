@@ -40,5 +40,4 @@ const StyledTitle = styled.h1`
   background-color: #003559;
   margin-left: 3%;
   height: auto;
-  //position: sticky;
 `;
