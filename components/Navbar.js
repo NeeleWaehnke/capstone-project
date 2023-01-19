@@ -4,9 +4,11 @@ import { useRouter } from 'next/router';
 import MenuIcon from '../public/assets/hamburger-menu.svg';
 import CloseIcon from '../public/assets/close-icon.svg';
 import { useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 export default function Navbar({ storages }) {
   const router = useRouter();
+  const { data: session } = useSession();
   const [isMenuActive, setIsMenuActive] = useState(false);
   const isactive = {
     yes: '#Ff3c1a',
@@ -15,55 +17,62 @@ export default function Navbar({ storages }) {
   if (!storages) {
     return null;
   }
+
   return (
     <StyledNav>
-      <StyledButton
-        onClick={() => {
-          setIsMenuActive((curr) => !curr);
-        }}
-        isMenuActive={isMenuActive}
-      >
-        {isMenuActive ? <CloseIcon /> : <MenuIcon />}
-      </StyledButton>
-      <StyledNavMenu>
-        <StyledLink
-          href="/"
-          key="Home"
-          prop={router.asPath === '/' ? { isactive } : null}
-        >
-          Home
-        </StyledLink>
-        {storages.map((storage) => {
-          return (
+      {session && (
+        <>
+          <StyledButton
+            onClick={() => {
+              setIsMenuActive((curr) => !curr);
+            }}
+            isMenuActive={isMenuActive}
+          >
+            {isMenuActive ? <CloseIcon /> : <MenuIcon />}
+          </StyledButton>
+          <StyledNavMenu>
             <StyledLink
-              key={storage.name}
-              href={`/${storage.name}`}
-              prop={router.asPath === `/${storage.name}` ? { isactive } : null}
+              href="/"
+              key="Home"
+              prop={router.asPath === '/' ? { isactive } : null}
             >
-              {storage.name}
+              Home
             </StyledLink>
-          );
-        })}
-      </StyledNavMenu>
-      {isMenuActive && (
-        <StyledNavMenuMobile>
-          <StyledLinkMobile href="/" key="Home">
-            Home
-          </StyledLinkMobile>
-          {storages.map((storage) => {
-            return (
-              <StyledLinkMobile
-                key={storage.name}
-                href={`/${storage.name}`}
-                prop={
-                  router.asPath === `/${storage.name}` ? { isactive } : null
-                }
-              >
-                {storage.name}
+            {storages.map((storage) => {
+              return (
+                <StyledLink
+                  key={storage.name}
+                  href={`/${storage.name}`}
+                  prop={
+                    router.asPath === `/${storage.name}` ? { isactive } : null
+                  }
+                >
+                  {storage.name}
+                </StyledLink>
+              );
+            })}
+          </StyledNavMenu>
+          {isMenuActive && (
+            <StyledNavMenuMobile>
+              <StyledLinkMobile href="/" key="Home">
+                Home
               </StyledLinkMobile>
-            );
-          })}
-        </StyledNavMenuMobile>
+              {storages.map((storage) => {
+                return (
+                  <StyledLinkMobile
+                    key={storage.name}
+                    href={`/${storage.name}`}
+                    prop={
+                      router.asPath === `/${storage.name}` ? { isactive } : null
+                    }
+                  >
+                    {storage.name}
+                  </StyledLinkMobile>
+                );
+              })}
+            </StyledNavMenuMobile>
+          )}
+        </>
       )}
     </StyledNav>
   );
@@ -71,14 +80,17 @@ export default function Navbar({ storages }) {
 
 const StyledNav = styled.nav`
   background-color: #003559;
+  position: static;
   width: 100%;
   grid-area: nav;
   align-self: end;
   justify-self: end;
+  height: 85px;
 `;
 
 const StyledLink = styled(Link)`
   color: #f2f2f2;
+
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;

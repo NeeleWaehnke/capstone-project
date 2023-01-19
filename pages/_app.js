@@ -2,28 +2,24 @@ import GlobalStyles from '../components/GlobalStyles';
 import Head from 'next/head';
 import { differenceInCalendarDays } from 'date-fns';
 import { useEffect, useState } from 'react';
+import { SessionProvider } from 'next-auth/react';
+import fetchData from '../helper/fetchData';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const [items, setItems] = useState([]);
   const [storages, setStorages] = useState([]);
 
   async function handleGetItems() {
-    const response = await fetch('/api/items');
-    const items = await response.json();
+    const items = await fetchData('api/items');
     setItems(items);
   }
-
-  useEffect(() => {
-    handleGetItems();
-  }, []);
-
   async function handleGetStorages() {
-    const response = await fetch('/api/storages');
-    const storages = await response.json();
+    const storages = await fetchData('api/storages');
     setStorages(storages);
   }
 
   useEffect(() => {
+    handleGetItems();
     handleGetStorages();
   }, []);
 
@@ -55,20 +51,22 @@ function MyApp({ Component, pageProps }) {
   );
   return (
     <>
-      <GlobalStyles />
-      <Head>
-        <link rel="icon" href="/fridge.ico" />
-        <title>My Food</title>
-      </Head>
-      <Component
-        {...pageProps}
-        items={items}
-        onGetItems={handleGetItems}
-        storages={storages}
-        onGetStorages={handleGetStorages}
-        warningItems={warningItems}
-        sortedItemsWithDate={sortedItemsWithDate}
-      />
+      <SessionProvider session={session}>
+        <GlobalStyles />
+        <Head>
+          <link rel="icon" href="/fridge.ico" />
+          <title>My Food</title>
+        </Head>
+        <Component
+          {...pageProps}
+          items={items}
+          onGetItems={handleGetItems}
+          storages={storages}
+          onGetStorages={handleGetStorages}
+          warningItems={warningItems}
+          sortedItemsWithDate={sortedItemsWithDate}
+        />
+      </SessionProvider>
     </>
   );
 }
