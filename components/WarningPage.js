@@ -16,7 +16,6 @@ export default function WarningPage({ warningItems }) {
       </StyledArrowLink>
 
       <StyledItemCounter>
-        {' '}
         {warningItems.length} {warningItems.length === 1 ? 'item' : 'items'}
       </StyledItemCounter>
     </StyledCardContainer>
