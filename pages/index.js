@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import WarningPage from '../components/WarningPage';
 import AddStorageForm from '../components/AddStorage';
 import LoginSection from '../components/LoginSection';
-import Container from '../components/Container';
+import { HomepageContainer } from '../components/Container/ContainerStyles';
 import { useSession } from 'next-auth/react';
 
 export default function Home({
@@ -18,7 +18,7 @@ export default function Home({
     <>
       <Header storages={storages} />
       <LoginSection />
-      <Container>
+      <HomepageContainer>
         {session && (
           <>
             <WarningPage warningItems={warningItems} />
@@ -31,7 +31,7 @@ export default function Home({
             <AddStorageForm onGetStorages={onGetStorages} storages={storages} />
           </>
         )}
-      </Container>
+      </HomepageContainer>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import ItemList from '../components/ItemList';
-import useLocalStorageState from 'use-local-storage-state';
-import Container from '../components/Container';
+import { PagesContainer } from '../components/Container/ContainerStyles';
+import styled from 'styled-components';
 
 export default function Warning({ warningItems, onGetItems, storages, items }) {
   async function handleRemoveItem(id) {
@@ -24,14 +24,15 @@ export default function Warning({ warningItems, onGetItems, storages, items }) {
   return (
     <>
       <Header storages={storages} />
-      <Container>
+
+      <PagesContainer>
         <ItemList
           currentItems={warningItems}
           onRemoveItem={handleRemoveItem}
           onEditItem={handleEditItem}
           storages={storages}
         />
-      </Container>
+      </PagesContainer>
     </>
   );
 }
