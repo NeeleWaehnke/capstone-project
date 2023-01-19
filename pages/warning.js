@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import ItemList from '../components/ItemList';
-import useLocalStorageState from 'use-local-storage-state';
+import { PagesContainer } from '../components/Container/ContainerStyles';
 import styled from 'styled-components';
 
 export default function Warning({ warningItems, onGetItems, storages, items }) {
@@ -24,19 +24,15 @@ export default function Warning({ warningItems, onGetItems, storages, items }) {
   return (
     <>
       <Header storages={storages} />
-      <StyledDiv>
+
+      <PagesContainer>
         <ItemList
           currentItems={warningItems}
           onRemoveItem={handleRemoveItem}
           onEditItem={handleEditItem}
           storages={storages}
         />
-      </StyledDiv>
+      </PagesContainer>
     </>
   );
 }
-
-const StyledDiv = styled.div`
-  margin-top: 100px;
-  margin-bottom: 75px;
-`;

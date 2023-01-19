@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import Header from '../components/Header';
 import ItemList from '../components/ItemList';
 import AddForm from '../components/AddForm';
-import styled from 'styled-components';
+import { PagesContainer } from '../components/Container/ContainerStyles';
 
 export default function Storage({
   sortedItemsWithDate,
@@ -56,14 +56,14 @@ export default function Storage({
   return (
     <>
       <Header storages={storages} />
-      <StyledDiv>
+      <PagesContainer>
         <ItemList
           currentItems={currentItems}
           onRemoveItem={handleRemoveItem}
           onEditItem={handleEditItem}
           storages={storages}
         />
-      </StyledDiv>
+      </PagesContainer>
       <AddForm
         onAddItem={handleAddItem}
         storages={storages}
@@ -72,7 +72,3 @@ export default function Storage({
     </>
   );
 }
-
-const StyledDiv = styled.div`
-  margin-top: 100px;
-`;

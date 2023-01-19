@@ -8,7 +8,7 @@ export default function Header({ storages }) {
 
   return (
     <StyledHeader>
-      <StyledTitle onClick={() => router.push('/')}>My Fridge</StyledTitle>
+      <StyledTitle onClick={() => router.push('/')}>Food at Home</StyledTitle>
 
       <Navbar storages={storages} />
     </StyledHeader>
@@ -23,16 +23,19 @@ const StyledHeader = styled.header`
   display: grid;
   grid-template-areas: 'heading nav';
   grid-template-columns: 45% 55%;
-  grid-template-rows: auto;
+  grid-template-rows: 100px;
   justify-items: start;
   z-index: 555;
-  height: 85px;
+  height: 100px;
+  @media (max-width: 340px) {
+    height: 110px;
+  }
 `;
 const StyledTitle = styled.h1`
   color: #fcfffd;
-
   grid-area: heading;
   justify-self: start;
-  max-height: 85px;
+  background-color: #003559;
   margin-left: 3%;
+  height: auto;
 `;

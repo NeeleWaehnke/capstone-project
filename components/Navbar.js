@@ -38,6 +38,13 @@ export default function Navbar({ storages }) {
             >
               Home
             </StyledLink>
+            <StyledLink
+              href="/warning"
+              key="Warning"
+              prop={router.asPath === '/warning' ? { isactive } : null}
+            >
+              Warning
+            </StyledLink>
             {storages.map((storage) => {
               return (
                 <StyledLink
@@ -56,6 +63,13 @@ export default function Navbar({ storages }) {
             <StyledNavMenuMobile>
               <StyledLinkMobile href="/" key="Home">
                 Home
+              </StyledLinkMobile>
+              <StyledLinkMobile
+                href="/warning"
+                key="Warning"
+                prop={router.asPath === '/warning' ? { isactive } : null}
+              >
+                Warning
               </StyledLinkMobile>
               {storages.map((storage) => {
                 return (
@@ -90,7 +104,6 @@ const StyledNav = styled.nav`
 
 const StyledLink = styled(Link)`
   color: #f2f2f2;
-
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -115,15 +128,24 @@ const StyledNavMenuMobile = styled.section`
   @media (max-width: 600px) {
     display: flex;
   }
-
+  @media (min-height: 720px) {
+    top: 13%;
+  }
+  @media (min-height: 770px) {
+    top: 12%;
+  }
+  @media (min-height: 800px) {
+    top: 11%;
+  }
   position: fixed;
-  top: 5%;
-  right: 0;
+  top: 14%;
+  right: 0px;
   height: fit-content;
   width: 50%;
   flex-flow: column nowrap;
   justify-content: center;
   background-color: #003559;
+  z-index: 999;
 `;
 const StyledLinkMobile = styled(StyledLink)`
   float: left;
@@ -140,13 +162,15 @@ const StyledLinkMobile = styled(StyledLink)`
 `;
 
 const StyledButton = styled.button`
-  z-index: 555;
-  position: relative;
-  top: ${(props) => (props.isMenuActive ? '40px' : '40px')};
+  z-index: 999;
   border: none;
   background-color: transparent;
   margin: 2%;
+  position: relative;
+  top: 40px;
   display: none;
+  justify-self: end;
+  align-self: end;
   @media (max-width: 600px) {
     display: block;
     float: right;

@@ -136,8 +136,8 @@ const StyledItem = styled.li`
   margin: 1% 1% 2% 0;
   width: 100%;
   display: grid;
-  grid-template-columns: 30% 10% 50% 10%;
-  grid-template-rows: 20px auto;
+  grid-template-columns: 40% 10% 40% 10%;
+  grid-template-rows: auto;
   grid-template-areas:
     'name qty date edit'
     'name qtyvalue datevalue edit'
@@ -196,11 +196,15 @@ const StyledSelector = styled.select`
   }
 `;
 
-const StyledName = styled.h3`
+const StyledName = styled.h2`
   margin: 2%;
+  text-align: left;
   justify-self: start;
-  align-self: center;
+  align-self: start;
   grid-area: name;
+  font-size: 1.3rem;
+  overflow-wrap: break-word;
+  width: 85%;
 `;
 
 const StyledText = styled.label`

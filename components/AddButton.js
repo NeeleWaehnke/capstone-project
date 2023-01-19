@@ -13,4 +13,5 @@ export default function AddButton({ onClick }) {
 const StyledButton = styled.button`
   background-color: transparent;
   border: none;
+  margin-bottom: 2%;
 `;

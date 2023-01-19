@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import WarningPage from '../components/WarningPage';
 import AddStorageForm from '../components/AddStorage';
 import LoginSection from '../components/LoginSection';
-import styled from 'styled-components';
+import { HomepageContainer } from '../components/Container/ContainerStyles';
 import { useSession } from 'next-auth/react';
 
 export default function Home({
@@ -18,7 +18,7 @@ export default function Home({
     <>
       <Header storages={storages} />
       <LoginSection />
-      <StyledDiv>
+      <HomepageContainer>
         {session && (
           <>
             <WarningPage warningItems={warningItems} />
@@ -31,18 +31,7 @@ export default function Home({
             <AddStorageForm onGetStorages={onGetStorages} storages={storages} />
           </>
         )}
-      </StyledDiv>
+      </HomepageContainer>
     </>
   );
 }
-
-const StyledDiv = styled.div`
-  @media (min-height: 700px) {
-    margin-top: 150px;
-  }
-  @media (min-height: 1000px) {
-    margin-top: 170px;
-  }
-  margin-top: 140px;
-  margin-bottom: 100px;
-`;
