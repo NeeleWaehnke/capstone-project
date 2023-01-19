@@ -128,8 +128,14 @@ const StyledNavMenuMobile = styled.section`
   @media (max-width: 600px) {
     display: flex;
   }
-  @media (max-width: 340px) {
-    top: 15%;
+  @media (min-height: 720px) {
+    top: 13%;
+  }
+  @media (min-height: 770px) {
+    top: 12%;
+  }
+  @media (min-height: 800px) {
+    top: 11%;
   }
   position: fixed;
   top: 14%;

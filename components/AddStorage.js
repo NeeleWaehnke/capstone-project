@@ -46,7 +46,7 @@ const StyledAddStorage = styled.form`
   height: auto;
   position: fixed;
   bottom: 0vh;
-  padding: 1%;
+  padding: 3%;
   color: #fcfffd;
   width: 100vw;
 `;
