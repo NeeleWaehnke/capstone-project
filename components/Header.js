@@ -8,9 +8,7 @@ export default function Header({ storages }) {
 
   return (
     <StyledHeader>
-      <StyledTitle onClick={() => router.push('/')}>
-        Food on the shelf
-      </StyledTitle>
+      <StyledTitle onClick={() => router.push('/')}>Food at Home</StyledTitle>
 
       <Navbar storages={storages} />
     </StyledHeader>
