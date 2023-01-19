@@ -38,6 +38,13 @@ export default function Navbar({ storages }) {
             >
               Home
             </StyledLink>
+            <StyledLink
+              href="/warning"
+              key="Warning"
+              prop={router.asPath === '/warning' ? { isactive } : null}
+            >
+              Warning
+            </StyledLink>
             {storages.map((storage) => {
               return (
                 <StyledLink
@@ -56,6 +63,13 @@ export default function Navbar({ storages }) {
             <StyledNavMenuMobile>
               <StyledLinkMobile href="/" key="Home">
                 Home
+              </StyledLinkMobile>
+              <StyledLinkMobile
+                href="/warning"
+                key="Warning"
+                prop={router.asPath === '/warning' ? { isactive } : null}
+              >
+                Warning
               </StyledLinkMobile>
               {storages.map((storage) => {
                 return (
@@ -86,11 +100,11 @@ const StyledNav = styled.nav`
   align-self: end;
   justify-self: end;
   height: 85px;
+  position: static;
 `;
 
 const StyledLink = styled(Link)`
   color: #f2f2f2;
-
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -119,13 +133,14 @@ const StyledNavMenuMobile = styled.section`
     top: 15%;
   }
   position: fixed;
-  top: 10%;
+  top: 13%;
   right: 0px;
   height: fit-content;
   width: 50%;
   flex-flow: column nowrap;
   justify-content: center;
   background-color: #003559;
+  z-index: 999;
 `;
 const StyledLinkMobile = styled(StyledLink)`
   float: left;
@@ -142,12 +157,12 @@ const StyledLinkMobile = styled(StyledLink)`
 `;
 
 const StyledButton = styled.button`
-  z-index: 555;
+  z-index: 999;
   border: none;
   background-color: transparent;
   margin: 2%;
   position: relative;
-  top: ${(props) => (props.isMenuActive ? '-8px' : '0')};
+  top: 40px;
   display: none;
   justify-self: end;
   align-self: end;

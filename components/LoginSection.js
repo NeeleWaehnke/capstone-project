@@ -25,13 +25,17 @@ export default function LoginSection() {
 
 const StyledLoginSection = styled.section`
   position: fixed;
-  top: 80px;
+  top: 95px;
   height: 45px;
   background-color: #003559;
   width: 100%;
   justify-content: space-evenly;
   display: flex;
   color: #fcfffd;
+  z-index: 444;
+  @media (max-width: 340px) {
+    top: 110px;
+  }
 `;
 
 const StyledLoginButton = styled.button`

@@ -24,11 +24,11 @@ const StyledHeader = styled.header`
   grid-template-areas: 'heading nav';
   grid-template-columns: 45% 55%;
   grid-template-rows: auto;
-  grid-template-rows: auto;
   justify-items: start;
   z-index: 555;
+  height: 95px;
   @media (max-width: 340px) {
-    min-height: 100px;
+    height: 110px;
   }
 `;
 const StyledTitle = styled.h1`

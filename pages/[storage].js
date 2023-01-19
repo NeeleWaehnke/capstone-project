@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import Header from '../components/Header';
 import ItemList from '../components/ItemList';
 import AddForm from '../components/AddForm';
-import Container from '../components/Container';
+import { PagesContainer } from '../components/Container/ContainerStyles';
 
 export default function Storage({
   sortedItemsWithDate,
@@ -56,14 +56,14 @@ export default function Storage({
   return (
     <>
       <Header storages={storages} />
-      <Container>
+      <PagesContainer>
         <ItemList
           currentItems={currentItems}
           onRemoveItem={handleRemoveItem}
           onEditItem={handleEditItem}
           storages={storages}
         />
-      </Container>
+      </PagesContainer>
       <AddForm
         onAddItem={handleAddItem}
         storages={storages}

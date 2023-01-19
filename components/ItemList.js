@@ -1,5 +1,6 @@
 import ItemCard from './ItemCard';
 import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
 export default function ItemList({
   currentItems,
@@ -7,6 +8,8 @@ export default function ItemList({
   onEditItem,
   storages,
 }) {
+  const router = useRouter();
+
   if (!currentItems) {
     return null;
   }
@@ -14,6 +17,12 @@ export default function ItemList({
   return (
     <>
       <StyledList>
+        {router.pathname === '/warning' && (
+          <Disclaimer>
+            Here are the items that are to their best-before date. Use them
+            soon!
+          </Disclaimer>
+        )}
         {currentItems.map((item) => {
           return (
             <ItemCard
@@ -43,4 +52,13 @@ const StyledList = styled.ul`
   @media (min-width: 900px) {
     width: 80vw;
   }
+`;
+const Disclaimer = styled.li`
+  background-color: #ff8c00;
+  border-radius: 5px;
+  margin: 1% 1% 2% 0;
+  width: 90vw;
+  text-align: center;
+  display: flex;
+  padding: 1%;
 `;
