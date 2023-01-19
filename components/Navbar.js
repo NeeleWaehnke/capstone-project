@@ -132,7 +132,7 @@ const StyledNavMenuMobile = styled.section`
     top: 15%;
   }
   position: fixed;
-  top: 13%;
+  top: 14%;
   right: 0px;
   height: fit-content;
   width: 50%;
