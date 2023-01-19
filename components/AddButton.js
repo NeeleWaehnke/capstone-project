@@ -14,4 +14,8 @@ const StyledButton = styled.button`
   background-color: transparent;
   border: none;
   margin-bottom: 2%;
+  margin-right: 2%;
+  position: fixed;
+  right: 0;
+  bottom: 0;
 `;
