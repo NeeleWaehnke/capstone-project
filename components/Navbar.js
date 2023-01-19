@@ -100,7 +100,6 @@ const StyledNav = styled.nav`
   align-self: end;
   justify-self: end;
   height: 85px;
-  position: static;
 `;
 
 const StyledLink = styled(Link)`

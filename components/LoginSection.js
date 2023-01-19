@@ -25,7 +25,7 @@ export default function LoginSection() {
 
 const StyledLoginSection = styled.section`
   position: fixed;
-  top: 95px;
+  top: 100px;
   height: 45px;
   background-color: #003559;
   width: 100%;
