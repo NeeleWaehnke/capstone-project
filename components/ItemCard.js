@@ -99,7 +99,7 @@ export default function ItemCard({
               );
             })}
           </StyledSelector>
-          <StyledButton type="submit">
+          <StyledButton type="submit" aria-label="Submit changes">
             <CheckIcon />
           </StyledButton>
         </StyledForm>
@@ -115,6 +115,7 @@ export default function ItemCard({
             onClick={() => {
               setIsEditing(true);
             }}
+            aria-label="Edit this item"
           >
             <EditIcon />
           </StyledEditButton>
@@ -122,6 +123,7 @@ export default function ItemCard({
             onClick={() => {
               onRemoveItem(id);
             }}
+            aria-label="Delete this item"
           >
             <DeleteIcon />
           </StyledDeleteButton>

@@ -35,7 +35,7 @@ export default function AddStorageForm({ onGetStorages }) {
         placeholder="Type here ..."
         required
       />
-      <StyledButton>
+      <StyledButton aria-label="Submit new Storage">
         <AddBoxIcon />
       </StyledButton>
     </StyledAddStorage>

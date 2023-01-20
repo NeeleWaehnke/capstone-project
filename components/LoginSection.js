@@ -10,7 +10,7 @@ export default function LoginSection() {
       {session ? (
         <>
           <p>Welcome {session?.user?.name}!</p>
-          <StyledLogoutButton onClick={signOut}>
+          <StyledLogoutButton onClick={signOut} aria-label="Sign out">
             <LogoutIcon />
           </StyledLogoutButton>
         </>

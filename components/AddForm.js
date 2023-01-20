@@ -50,7 +50,7 @@ export default function AddForm({ onAddItem, storages, currentStorage }) {
               />
               <InputLabel2 htmlFor="stored-since">stored since</InputLabel2>
             </StyledRadio>
-            <label htmlFor="date"></label>
+            <label htmlFor="date" aria-label="date"></label>
             <InputDate type="date" id="date" name="date" required />
             <label htmlFor="quantity"></label>
             <InputQty
@@ -73,7 +73,7 @@ export default function AddForm({ onAddItem, storages, currentStorage }) {
                 );
               })}
             </InputStorage>
-            <StyledButton type="submit">
+            <StyledButton type="submit" aria-label="Add this item">
               <CheckIcon />
             </StyledButton>
           </StyledForm>

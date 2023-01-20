@@ -51,20 +51,24 @@ export default function StorageCard({
             defaultValue={name}
             required
           />
-          <StyledButton>
+          <StyledButton aria-label="Submit changes">
             <StyledCheckIcon />
           </StyledButton>
         </StyledForm>
       ) : (
         <StyledCardContainer>
           <StyledTitle>{name}</StyledTitle>
-          <StyledDeleteButton onClick={() => handleRemoveConfirmation()}>
+          <StyledDeleteButton
+            onClick={() => handleRemoveConfirmation()}
+            aria-label="Delete this storage"
+          >
             <DeleteIcon />
           </StyledDeleteButton>
           <StyledButton
             onClick={() => {
               setIsEditing(true);
             }}
+            aria-label="Edit this storage"
           >
             <EditIcon />
           </StyledButton>
@@ -72,7 +76,7 @@ export default function StorageCard({
             {getNumberOfItems(name, items)}{' '}
             {getNumberOfItems(name, items) === 1 ? 'item' : 'items'}
           </StyledItemCounter>
-          <StyledArrowLink href={`/${name}`}>
+          <StyledArrowLink href={`/${name}`} aria-label="Link to storage page">
             <ArrowIcon />
           </StyledArrowLink>
         </StyledCardContainer>
