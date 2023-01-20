@@ -12,7 +12,6 @@ export default function StorageCard({
   items,
   onEditStorage,
   onRemoveStorage,
-  onGetItems,
 }) {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -43,7 +42,7 @@ export default function StorageCard({
   return (
     <>
       {isEditing === true ? (
-        <StyledForm onSubmit={(event) => handleSubmitEdit(event, items, name)}>
+        <StyledForm onSubmit={(event) => handleSubmitEdit(event, name, id)}>
           <label htmlFor="storage"></label>
           <StyledInput
             type="text"
@@ -157,4 +156,7 @@ const StyledInput = styled.input`
   align-self: center;
   justify-self: center;
   font-size: 1.3rem;
+  &:focus {
+    outline: #ff3c1a 2px solid;
+  }
 `;

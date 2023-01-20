@@ -21,61 +21,63 @@ export default function AddForm({ onAddItem, storages, currentStorage }) {
     setAddFormActive(false);
   }
   return (
-    <StyledSection>
+    <>
       {addFormActive === true ? (
-        <StyledForm onSubmit={handleSubmit}>
-          <label htmlFor="name"></label>
-          <InputName
-            type="text"
-            id="name"
-            name="name"
-            placeholder="name"
-            required
-          />
-          <StyledRadio>
-            <InputRadio
-              type="radio"
-              id="best-before"
-              name="datetype"
-              value="best-before"
+        <StyledSection>
+          <StyledForm onSubmit={handleSubmit}>
+            <label htmlFor="name"></label>
+            <InputName
+              type="text"
+              id="name"
+              name="name"
+              placeholder="name"
+              required
             />
+            <StyledRadio>
+              <InputRadio
+                type="radio"
+                id="best-before"
+                name="datetype"
+                value="best-before"
+              />
 
-            <InputLabel htmlFor="best-before">best before</InputLabel>
-            <InputRadio2
-              type="radio"
-              id="stored-since"
-              name="datetype"
-              value="stored-since"
+              <InputLabel htmlFor="best-before">best before</InputLabel>
+              <InputRadio2
+                type="radio"
+                id="stored-since"
+                name="datetype"
+                value="stored-since"
+              />
+              <InputLabel2 htmlFor="stored-since">stored since</InputLabel2>
+            </StyledRadio>
+            <label htmlFor="date"></label>
+            <InputDate type="date" id="date" name="date" required />
+            <label htmlFor="quantity"></label>
+            <InputQty
+              type="number"
+              id="quantity"
+              name="quantity"
+              placeholder="Qty."
             />
-            <InputLabel2 htmlFor="stored-since">stored since</InputLabel2>
-          </StyledRadio>
-          <label htmlFor="date"></label>
-          <InputDate type="date" id="date" name="date" required />
-          <label htmlFor="quantity"></label>
-          <InputQty
-            type="number"
-            id="quantity"
-            name="quantity"
-            placeholder="Qty."
-          />
-          <label htmlFor="storage"></label>
-          <InputStorage
-            id="storage"
-            name="storage"
-            defaultValue={currentStorage}
-          >
-            {storages.map((storage) => {
-              return (
-                <option key={storage.id} value={storage.name}>
-                  {storage.name}
-                </option>
-              );
-            })}
-          </InputStorage>
-          <StyledButton type="submit">
-            <CheckIcon />
-          </StyledButton>
-        </StyledForm>
+            <label htmlFor="storage"></label>
+            <InputStorage
+              id="storage"
+              name="storage"
+              defaultValue={currentStorage}
+            >
+              {storages.map((storage) => {
+                return (
+                  <option key={storage.id} value={storage.name}>
+                    {storage.name}
+                  </option>
+                );
+              })}
+            </InputStorage>
+            <StyledButton type="submit">
+              <CheckIcon />
+            </StyledButton>
+          </StyledForm>
+        </StyledSection>
       ) : (
         <AddButton
           setAddActive={setAddFormActive}
@@ -84,7 +86,7 @@ export default function AddForm({ onAddItem, storages, currentStorage }) {
           }}
         />
       )}
-    </StyledSection>
+    </>
   );
 }
 
@@ -96,11 +98,13 @@ const StyledSection = styled.section`
   display: flex;
   justify-content: right;
   height: auto;
+  background-color: #006daa;
 `;
 const StyledForm = styled.form`
   background-color: #006daa;
   width: 100%;
-
+  margin-bottom: 4%;
+  margin-left: 2%;
   padding: 2% 0 2% 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -115,7 +119,7 @@ const StyledButton = styled.button`
   background-color: transparent;
   border: none;
   position: absolute;
-  bottom: 3px;
+  bottom: 10px;
   right: 3px;
   grid-area: check;
   align-self: end;

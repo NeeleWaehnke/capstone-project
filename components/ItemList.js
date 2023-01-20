@@ -19,8 +19,8 @@ export default function ItemList({
       <StyledList>
         {router.pathname === '/warning' && (
           <Disclaimer>
-            Here are the items that are to their best-before date. Use them
-            soon!
+            Here are the items that are close to their best-before date. Use
+            them soon!
           </Disclaimer>
         )}
         {currentItems.map((item) => {
