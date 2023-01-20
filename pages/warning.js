@@ -1,9 +1,8 @@
 import Header from '../components/Header';
 import ItemList from '../components/ItemList';
 import { PagesContainer } from '../components/Container/ContainerStyles';
-import styled from 'styled-components';
 
-export default function Warning({ warningItems, onGetItems, storages, items }) {
+export default function Warning({ warningItems, onGetItems, storages }) {
   async function handleRemoveItem(id) {
     await fetch('/api/items/' + id, {
       method: 'DELETE',
