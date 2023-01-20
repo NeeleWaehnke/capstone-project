@@ -156,4 +156,7 @@ const StyledInput = styled.input`
   align-self: center;
   justify-self: center;
   font-size: 1.3rem;
+  &:focus {
+    outline: #ff3c1a 2px solid;
+  }
 `;
