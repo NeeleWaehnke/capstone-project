@@ -15,9 +15,7 @@ export default function LoginSection() {
           </StyledLogoutButton>
         </>
       ) : (
-        <StyledLoginButton onClick={() => signIn('github')}>
-          Sign in
-        </StyledLoginButton>
+        <StyledLoginButton onClick={() => signIn()}>Sign in</StyledLoginButton>
       )}
     </StyledLoginSection>
   );
