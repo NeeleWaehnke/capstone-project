@@ -10,14 +10,12 @@ export default function LoginSection() {
       {session ? (
         <>
           <p>Welcome {session?.user?.name}!</p>
-          <StyledLogoutButton onClick={signOut}>
+          <StyledLogoutButton onClick={signOut} aria-label="Sign out">
             <LogoutIcon />
           </StyledLogoutButton>
         </>
       ) : (
-        <StyledLoginButton onClick={() => signIn('github')}>
-          Sign in
-        </StyledLoginButton>
+        <StyledLoginButton onClick={() => signIn()}>Sign in</StyledLoginButton>
       )}
     </StyledLoginSection>
   );

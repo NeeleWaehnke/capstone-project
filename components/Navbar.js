@@ -27,6 +27,7 @@ export default function Navbar({ storages }) {
               setIsMenuActive((curr) => !curr);
             }}
             isMenuActive={isMenuActive}
+            aria-label={isMenuActive ? 'Close Menu' : 'Open Menu'}
           >
             {isMenuActive ? <CloseIcon /> : <MenuIcon />}
           </StyledButton>

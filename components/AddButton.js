@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default function AddButton({ onClick }) {
   return (
     <>
-      <StyledButton onClick={onClick}>
+      <StyledButton onClick={onClick} aria-label="Add new Item">
         <AddIcon />
       </StyledButton>
     </>
