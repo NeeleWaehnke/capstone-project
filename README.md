@@ -1,34 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Food at Home
+>Capstone Project for Web Development Bootcamp @neuefische
+---
 
-## Getting Started
+Welcome to the repository for my first project **Food at Home**!
 
-First, run the development server:
+Food at Home provides an overview of the food you have at home. Special focus is placed on the best-before date - food that will expire in the next few days is displayed on a separate page. So you can see at a glance what you should use up soon.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## First Look
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Homepage | Storage-Page with Add-Item Form|
+---------|---------------------------------
+![Screenshot_20230130_141925](https://user-images.githubusercontent.com/115499721/215488772-376dd013-5a5f-4f7c-b8f9-866c2f011cb4.png)| ![Screenshot_20230130_141744](https://user-images.githubusercontent.com/115499721/215488813-14fdfaa1-e047-4a2e-a3ae-811a5368062f.png)|
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+You can check the App out over on [Vercel](https://food-at-home.vercel.app/). You can sign in with your GitHub Account or use the test credentials `username: foodstorage password: foodstorage`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+> The design is **mobile-first**, it is optimized for the iPhone SE dimensions!
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Tech Stack
 
-## Learn More
+- Next.js
+- React
+- MongoDB
+- NextAuth
+- mongoose
+- JavaScript
+- styled-components
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
